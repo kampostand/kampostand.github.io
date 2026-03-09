@@ -560,15 +560,9 @@
     <!-- 基本情報 -->
     <div class="form-group">
       <div class="form-group-title">基本情報</div>
-      <div class="form-row">
-        <div class="form-field">
-          <label class="form-label">お名前 <span class="required">必須</span></label>
-          <input type="text" class="form-input" id="name" placeholder="山田 花子" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label">受講コース名 <span class="required">必須</span></label>
-          <input type="text" class="form-input" id="course" placeholder="漢方占い中級講座" required>
-        </div>
+      <div class="form-field" style="margin-bottom:16px;">
+        <label class="form-label">お名前 <span class="required">必須</span></label>
+        <input type="text" class="form-input" id="name" placeholder="山田 花子" required>
       </div>
       <div class="form-row">
         <div class="form-field">
@@ -576,8 +570,8 @@
           <input type="email" class="form-input" id="email" placeholder="your@email.com" required>
         </div>
         <div class="form-field">
-          <label class="form-label">電話番号 <span class="optional">任意</span></label>
-          <input type="tel" class="form-input" id="tel" placeholder="090-0000-0000">
+          <label class="form-label">電話番号 <span class="required">必須</span></label>
+          <input type="tel" class="form-input" id="tel" placeholder="090-0000-0000" required>
         </div>
       </div>
     </div>
@@ -675,9 +669,9 @@
 const PRODUCTS = [
   { label: '-- 商品を選択してください --', value: 0, group: '' },
   { label: '1包パッケージ（卸値 200円）', value: 200, group: 'A' },
-  { label: '7包パッケージ（卸値 1,287円）', value: 1287, group: 'A' },
-  { label: '15包パッケージ（卸値 2,587円）', value: 2587, group: 'A' },
-  { label: '30包パッケージ（卸値 4,875円）', value: 4875, group: 'A' },
+  { label: '7包パッケージ（卸値 1,280円）', value: 1280, group: 'A' },
+  { label: '15包パッケージ（卸値 2,480円）', value: 2480, group: 'A' },
+  { label: '30包パッケージ（卸値 4,480円）', value: 4480, group: 'A' },
   { label: '15包バルク（卸値 2,250円）', value: 2250, group: 'B' },
   { label: '30包バルク（卸値 4,500円）', value: 4500, group: 'B' },
   { label: '50包バルク（卸値 7,500円）', value: 7500, group: 'B' },
@@ -814,7 +808,6 @@ function handleSubmit(e) {
 
   const payload = {
     name:     document.getElementById('name').value,
-    course:   document.getElementById('course').value,
     email:    document.getElementById('email').value,
     tel:      document.getElementById('tel').value,
     items:    items.join('\n'),
