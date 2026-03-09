@@ -288,23 +288,20 @@
     background: var(--green-faint);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 14px 16px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 10px 14px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     position: relative;
   }
   .order-item-num {
-    position: absolute;
-    top: -10px;
-    left: 14px;
     background: var(--green-mid);
     color: white;
     font-size: 10px;
     padding: 1px 8px;
     border-radius: 10px;
     letter-spacing: .08em;
+    display: inline-block;
   }
   .order-item-subtotal {
     grid-column: 1 / -1;
