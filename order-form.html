@@ -798,15 +798,49 @@ function handleSubmit(e) {
   const btn = document.getElementById('submit-btn');
   btn.textContent = '送信中…';
   btn.disabled = true;
-  // ▼ ここにGoogleフォームへのfetch、またはGASエンドポイントへのPOSTを実装
-  setTimeout(() => {
+
+  const items = [];
+  document.querySelectorAll('.order-item').forEach(item => {
+    const id = item.id.replace('item-', '');
+    const prod = document.getElementById('prod-' + id);
+    const jikkan = document.getElementById('jikkan-' + id);
+    const qty = document.getElementById('qty-' + id);
+    if (prod && prod.value) {
+      const prodText = prod.options[prod.selectedIndex].text;
+      const jikkanText = jikkan && jikkan.value ? jikkan.value : '未選択';
+      items.push(prodText + ' / ' + jikkanText + ' × ' + qty.value + '個');
+    }
+  });
+
+  const payload = {
+    name:     document.getElementById('name').value,
+    course:   document.getElementById('course').value,
+    email:    document.getElementById('email').value,
+    tel:      document.getElementById('tel').value,
+    items:    items.join('\n'),
+    total:    document.getElementById('grand-total').textContent,
+    zip:      document.getElementById('zip').value,
+    pref:     document.getElementById('pref').value,
+    address1: document.getElementById('address1').value,
+    address2: document.getElementById('address2').value,
+    remarks:  document.getElementById('remarks').value,
+  };
+
+  fetch('https://script.google.com/macros/s/AKfycbyJ6NH-F60lNtwLoxTmN5OjMD43VqStsEduWft30uM0qDdvIg3zj0C-lrSB57vz6i1U/exec', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  })
+  .then(() => {
     document.getElementById('order-form').style.display = 'none';
     document.getElementById('success-wrap').style.display = 'block';
-    // プログレス更新
     document.getElementById('step1').className = 'step done';
     document.getElementById('step2').className = 'step done';
     document.getElementById('step3').className = 'step active';
-  }, 1200);
+  })
+  .catch(() => {
+    btn.textContent = '送信に失敗しました。もう一度お試しください。';
+    btn.disabled = false;
+  });
 }
 
 // 初期化
