@@ -521,6 +521,63 @@
     .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .total-panel { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
+
+  /* ===== JIKKAN GRID ===== */
+  .jikkan-grid { margin-top: 4px; }
+  .jikkan-grid-label {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    letter-spacing: .04em;
+  }
+  .jikkan-cells {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .jikkan-cell {
+    background: var(--green-faint);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 6px 8px;
+    text-align: center;
+  }
+  .jikkan-name {
+    font-size: 11px;
+    color: var(--green-deep);
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    letter-spacing: .02em;
+  }
+  .jikkan-cell .qty-row {
+    gap: 4px;
+  }
+  .jikkan-cell .qty-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+    border-radius: 4px;
+  }
+  .jikkan-cell .qty-input {
+    width: 36px;
+    height: 24px;
+    font-size: 13px;
+    text-align: center;
+    padding: 0;
+  }
+  .order-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 480px) {
+    .jikkan-cells { grid-template-columns: repeat(2, 1fr); }
+  }
+
 </style>
 </head>
 <body>
@@ -579,13 +636,14 @@
     <!-- 注文内容 -->
     <div class="form-group">
       <div class="form-group-title">ご注文内容</div>
-      <p class="form-group-note">合計5,000円（税込）以上からご注文いただけます。商品と十干の種類を選んでください。</p>
+      <p class="form-group-note">商品を選ぶと十干10種の数量入力欄が表示されます。合計5,000円（税込）以上からご注文いただけます。</p>
+      <p class="form-group-note" style="margin-top:8px;">少量のご自身用購入は、<a href="https://kampostand.stores.jp/" target="_blank" style="color:var(--green-mid);text-decoration:underline;">オンラインストア</a>にてクーポンコード <strong>panda55</strong> をお支払い画面で入力いただくと、受講生割引（20%OFF）が適用されます。</p>
 
       <div class="order-items" id="order-items">
         <!-- JS で生成 -->
       </div>
 
-      <button type="button" class="add-item-btn" onclick="addItem()">＋ 商品を追加する</button>
+      <button type="button" class="add-item-btn" onclick="addItem()">＋ 別の商品を追加する</button>
 
       <div class="total-panel" style="margin-top:18px;">
         <span class="total-label">合計金額（税込）</span>
@@ -667,7 +725,6 @@
 
 <script>
 const PRODUCTS = [
-  { label: '-- 商品を選択してください --', value: 0, group: '' },
   { label: '1包パッケージ（卸値 200円）', value: 200, group: 'A' },
   { label: '7包パッケージ（卸値 1,280円）', value: 1280, group: 'A' },
   { label: '15包パッケージ（卸値 2,480円）', value: 2480, group: 'A' },
@@ -680,62 +737,84 @@ const JIKKAN = ['甲（きのえ）','乙（きのと）','丙（ひのえ）','
 
 let itemCount = 0;
 
-function buildProductSelect(id) {
-  let html = `<select class="form-select product-select" id="${id}" onchange="onProductChange(this)" required>`;
-  let lastGroup = '';
-  PRODUCTS.forEach(p => {
-    if (p.group && p.group !== lastGroup) {
-      if (lastGroup) html += '</optgroup>';
-      html += `<optgroup label="【${p.group}】${p.group === 'A' ? 'パッケージ商品' : 'バルク商品'}">`;
-      lastGroup = p.group;
-    }
-    html += `<option value="${p.value}"${p.value === 0 ? ' disabled selected' : ''}>${p.label}</option>`;
-  });
-  if (lastGroup) html += '</optgroup>';
-  html += '</select>';
-  return html;
-}
-
-function buildJikkanSelect(id) {
-  let html = `<select class="form-select jikkan-select" id="${id}" onchange="markSelected(this)" required>`;
-  html += `<option value="" disabled selected>-- 十干を選択 --</option>`;
-  JIKKAN.forEach(j => { html += `<option value="${j}">${j}</option>`; });
-  html += '</select>';
-  return html;
-}
-
 function addItem() {
   itemCount++;
   const n = itemCount;
   const container = document.getElementById('order-items');
   const div = document.createElement('div');
   div.className = 'order-item';
-  div.id = `item-${n}`;
+  div.id = 'item-' + n;
+
+  // Build product select options
+  let opts = '<option value="" disabled selected>-- 商品を選択してください --</option>';
+  let lastGroup = '';
+  PRODUCTS.forEach(p => {
+    if (p.group !== lastGroup) {
+      if (lastGroup) opts += '</optgroup>';
+      opts += '<optgroup label="【' + p.group + '】' + (p.group === 'A' ? 'パッケージ商品' : 'バルク商品') + '">';
+      lastGroup = p.group;
+    }
+    opts += '<option value="' + p.value + '">' + p.label + '</option>';
+  });
+  if (lastGroup) opts += '</optgroup>';
+
   div.innerHTML = `
-    <div class="order-item-num">商品 ${n}</div>
-    ${n > 1 ? `<button type="button" class="delete-btn" onclick="removeItem(${n})" title="削除">×</button>` : ''}
-    <div class="form-field">
+    <div class="order-item-header">
+      <span class="order-item-num">商品 ${n}</span>
+      ${n > 1 ? '<button type="button" class="delete-btn" onclick="removeItem(' + n + ')" title="削除">×</button>' : ''}
+    </div>
+    <div class="form-field" style="margin-bottom:14px;">
       <label class="form-label" style="font-size:11.5px;color:var(--muted);">商品名</label>
-      <div class="select-wrap">${buildProductSelect('prod-' + n)}</div>
-    </div>
-    <div class="form-field">
-      <label class="form-label" style="font-size:11.5px;color:var(--muted);">種類（十干）</label>
-      <div class="select-wrap">${buildJikkanSelect('jikkan-' + n)}</div>
-    </div>
-    <div class="form-field" style="grid-column:1/-1;">
-      <label class="form-label" style="font-size:11.5px;color:var(--muted);">数量</label>
-      <div class="qty-row">
-        <button type="button" class="qty-btn" onclick="changeQty(${n}, -1)">−</button>
-        <input type="number" class="qty-input" id="qty-${n}" value="1" min="1" max="99" onchange="calcAll()">
-        <button type="button" class="qty-btn" onclick="changeQty(${n}, 1)">＋</button>
+      <div class="select-wrap">
+        <select class="form-select product-select" id="prod-${n}" onchange="onProductChange(${n})" required>
+          ${opts}
+        </select>
       </div>
     </div>
-    <div class="order-item-subtotal">
-      <span class="subtotal-label">小計</span>
-      <span class="subtotal-amount" id="sub-${n}">—</span>
+    <div class="jikkan-grid" id="jikkan-grid-${n}" style="display:none;">
+      <div class="jikkan-grid-label">十干ごとの数量（不要な種類は0のままで）</div>
+      <div class="jikkan-cells" id="jikkan-cells-${n}"></div>
+      <div class="order-item-subtotal">
+        <span class="subtotal-label">この商品の小計</span>
+        <span class="subtotal-amount" id="sub-${n}">—</span>
+      </div>
     </div>
   `;
   container.appendChild(div);
+}
+
+function onProductChange(n) {
+  const sel = document.getElementById('prod-' + n);
+  sel.dataset.selected = sel.value ? 'true' : 'false';
+  const grid = document.getElementById('jikkan-grid-' + n);
+  const cells = document.getElementById('jikkan-cells-' + n);
+
+  if (!sel.value) { grid.style.display = 'none'; return; }
+
+  // Build jikkan cells
+  cells.innerHTML = '';
+  JIKKAN.forEach((j, i) => {
+    const cell = document.createElement('div');
+    cell.className = 'jikkan-cell';
+    cell.innerHTML = `
+      <div class="jikkan-name">${j}</div>
+      <div class="qty-row" style="justify-content:center;">
+        <button type="button" class="qty-btn" onclick="changeQty('jqty-${n}-${i}', -1)">−</button>
+        <input type="number" class="qty-input" id="jqty-${n}-${i}" value="0" min="0" max="99" oninput="calcAll()">
+        <button type="button" class="qty-btn" onclick="changeQty('jqty-${n}-${i}', 1)">＋</button>
+      </div>
+    `;
+    cells.appendChild(cell);
+  });
+  grid.style.display = 'block';
+  calcAll();
+}
+
+function changeQty(inputId, delta) {
+  const input = document.getElementById(inputId);
+  const min = parseInt(input.min) || 0;
+  const val = Math.max(min, Math.min(99, (parseInt(input.value) || 0) + delta));
+  input.value = val;
   calcAll();
 }
 
@@ -745,34 +824,22 @@ function removeItem(n) {
   calcAll();
 }
 
-function changeQty(n, delta) {
-  const input = document.getElementById('qty-' + n);
-  const val = Math.max(1, Math.min(99, (parseInt(input.value) || 1) + delta));
-  input.value = val;
-  calcAll();
-}
-
-function onProductChange(sel) {
-  markSelected(sel);
-  calcAll();
-}
-
-function markSelected(sel) {
-  sel.dataset.selected = sel.value ? 'true' : 'false';
-}
-
 function calcAll() {
   let sum = 0;
   document.querySelectorAll('.order-item').forEach(item => {
-    const id = item.id.replace('item-', '');
-    const prod = document.getElementById('prod-' + id);
-    const qty  = parseInt(document.getElementById('qty-' + id)?.value) || 1;
+    const n = item.id.replace('item-', '');
+    const prod = document.getElementById('prod-' + n);
     const price = parseInt(prod?.value) || 0;
-    const sub = price * qty;
-    const subEl = document.getElementById('sub-' + id);
-    if (subEl) subEl.textContent = sub ? sub.toLocaleString() + '円' : '—';
-    sum += sub;
+    let subTotal = 0;
+    JIKKAN.forEach((j, i) => {
+      const qtyEl = document.getElementById('jqty-' + n + '-' + i);
+      if (qtyEl) subTotal += price * (parseInt(qtyEl.value) || 0);
+    });
+    const subEl = document.getElementById('sub-' + n);
+    if (subEl) subEl.textContent = subTotal ? subTotal.toLocaleString() + '円' : '—';
+    sum += subTotal;
   });
+
   const totalEl = document.getElementById('grand-total');
   const warnEl  = document.getElementById('min-warn');
   const btn     = document.getElementById('submit-btn');
@@ -795,15 +862,15 @@ function handleSubmit(e) {
 
   const items = [];
   document.querySelectorAll('.order-item').forEach(item => {
-    const id = item.id.replace('item-', '');
-    const prod = document.getElementById('prod-' + id);
-    const jikkan = document.getElementById('jikkan-' + id);
-    const qty = document.getElementById('qty-' + id);
-    if (prod && prod.value) {
-      const prodText = prod.options[prod.selectedIndex].text;
-      const jikkanText = jikkan && jikkan.value ? jikkan.value : '未選択';
-      items.push(prodText + ' / ' + jikkanText + ' × ' + qty.value + '個');
-    }
+    const n = item.id.replace('item-', '');
+    const prod = document.getElementById('prod-' + n);
+    if (!prod || !prod.value) return;
+    const prodText = prod.options[prod.selectedIndex].text;
+    JIKKAN.forEach((j, i) => {
+      const qtyEl = document.getElementById('jqty-' + n + '-' + i);
+      const qty = parseInt(qtyEl?.value) || 0;
+      if (qty > 0) items.push(prodText + ' / ' + j + ' × ' + qty + '個');
+    });
   });
 
   const payload = {
