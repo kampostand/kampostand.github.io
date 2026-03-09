@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>卸売注文フォーム｜十干茶・受講生専用</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #1a3d2b;
+    --green-mid:  #2d6a4f;
+    --green-light:#52b788;
+    --green-pale: #d8ede3;
+    --green-faint:#f0f8f3;
+    --gold:       #b5934a;
+    --ink:        #1e1e1e;
+    --text:       #3a3a3a;
+    --muted:      #6b6b6b;
+    --border:     #c8ddd2;
+    --bg:         #fafcfb;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    color-scheme: light only;
+    overflow-x: hidden;
+  }
+  body {
+    overflow-x: hidden;
+    background-color: #fafcfb !important;
+    color: #3a3a3a !important;
+  }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    background: var(--green-deep);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-brand {
+    font-size: 11px;
+    color: rgba(255,255,255,.5);
+    letter-spacing: .25em;
+  }
+  .header-back {
+    font-size: 11.5px;
+    color: rgba(255,255,255,.6);
+    text-decoration: none;
+    letter-spacing: .08em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color .15s;
+  }
+  .header-back:hover { color: white; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--green-deep);
+    padding: 48px 24px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 100% at 50% 120%, rgba(82,183,136,.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(82,183,136,.5);
+    color: var(--green-light);
+    font-size: 10px;
+    letter-spacing: .3em;
+    padding: 4px 16px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 600;
+    color: white;
+    letter-spacing: .06em;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .hero-sub {
+    font-size: 12.5px;
+    color: rgba(255,255,255,.5);
+    letter-spacing: .05em;
+  }
+
+  /* ===== PROGRESS ===== */
+  .progress-bar-wrap {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+  }
+  .progress-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    position: relative;
+  }
+  .step::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .step:last-child::after { display: none; }
+  .step-dot {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    position: relative;
+    z-index: 1;
+    transition: background .3s, color .3s;
+  }
+  .step.active .step-dot { background: var(--green-light); color: white; }
+  .step.done .step-dot { background: var(--green-deep); color: white; }
+  .step.done::after { background: var(--green-deep); }
+  .step-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: .06em;
+    white-space: nowrap;
+  }
+  .step.active .step-label { color: var(--green-mid); font-weight: 600; }
+
+  /* ===== PAGE ===== */
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* ===== FORM GROUPS ===== */
+  .form-group {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 24px 24px;
+    margin-bottom: 16px;
+  }
+  .form-group-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green-deep);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin-bottom: 22px;
+  }
+  .form-group-note {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin: -14px 0 18px;
+  }
+
+  .form-field { margin-bottom: 16px; }
+  .form-field:last-child { margin-bottom: 0; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+
+  .form-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 7px;
+  }
+  .required {
+    background: var(--green-mid);
+    color: white;
+    font-size: 9.5px;
+    padding: 1px 6px;
+    border-radius: 2px;
+    letter-spacing: .04em;
+  }
+  .optional {
+    background: #e0e0e0;
+    color: var(--muted);
+    font-size: 9.5px;
+    padding: 1px 6px;
+    border-radius: 2px;
+    letter-spacing: .04em;
+  }
+
+  /* ===== INPUTS ===== */
+  .form-input,
+  .form-select,
+  .form-textarea {
+    display: block;
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 13px;
+    font-size: 14px;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--ink);
+    background: white;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color .18s, box-shadow .18s;
+    line-height: 1.5;
+  }
+  .form-input::placeholder,
+  .form-textarea::placeholder { color: #bbb; }
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--green-light);
+    box-shadow: 0 0 0 3px rgba(82,183,136,.15);
+  }
+
+  /* select カスタム矢印 */
+  .select-wrap {
+    position: relative;
+  }
+  .select-wrap::after {
+    content: '';
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--green-mid);
+    pointer-events: none;
+  }
+  .form-select { padding-right: 36px; cursor: pointer; }
+  /* 選択済みの文字色を明確に */
+  .form-select option { color: var(--ink); background: white; }
+  .form-select:not([data-selected="true"]) { color: #bbb; }
+  .form-select[data-selected="true"] { color: var(--ink); font-weight: 500; }
+
+  .form-textarea { resize: vertical; min-height: 96px; line-height: 1.75; }
+
+  /* ===== ORDER TABLE ===== */
+  .order-items { display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
+
+  .order-item {
+    background: var(--green-faint);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px 14px;
+    position: relative;
+  }
+  .order-item-num {
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    background: var(--green-mid);
+    color: white;
+    font-size: 10px;
+    padding: 1px 8px;
+    border-radius: 10px;
+    letter-spacing: .08em;
+  }
+  .order-item-subtotal {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    border-top: 1px dashed var(--border);
+    padding-top: 10px;
+    margin-top: 2px;
+  }
+  .subtotal-label { font-size: 12px; color: var(--muted); }
+  .subtotal-amount { font-family: 'Shippori Mincho', serif; font-size: 18px; font-weight: 600; color: var(--green-deep); }
+
+  .qty-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .qty-btn {
+    width: 32px; height: 32px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    background: white;
+    color: var(--green-mid);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background .15s, border-color .15s;
+    line-height: 1;
+  }
+  .qty-btn:hover { background: var(--green-pale); border-color: var(--green-light); }
+  .qty-input {
+    width: 52px;
+    text-align: center;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 4px;
+    font-size: 15px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 600;
+    color: var(--ink);
+    background: white;
+    -moz-appearance: textfield;
+  }
+  .qty-input::-webkit-inner-spin-button,
+  .qty-input::-webkit-outer-spin-button { display: none; }
+  .qty-input:focus { outline: none; border-color: var(--green-light); box-shadow: 0 0 0 3px rgba(82,183,136,.15); }
+
+  .delete-btn {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 24px; height: 24px;
+    border: none;
+    background: none;
+    color: #ccc;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: color .15s, background .15s;
+    line-height: 1;
+    padding: 0;
+  }
+  .delete-btn:hover { color: #c0392b; background: #fef0ee; }
+
+  .add-item-btn {
+    width: 100%;
+    padding: 11px;
+    background: white;
+    border: 1.5px dashed var(--green-light);
+    border-radius: 6px;
+    color: var(--green-mid);
+    font-size: 13px;
+    font-family: 'Noto Sans JP', sans-serif;
+    cursor: pointer;
+    transition: background .15s;
+    letter-spacing: .05em;
+  }
+  .add-item-btn:hover { background: var(--green-faint); }
+
+  /* ===== TOTAL ===== */
+  .total-panel {
+    background: var(--green-deep);
+    border-radius: 8px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+  }
+  .total-label { font-size: 12.5px; color: rgba(255,255,255,.65); }
+  .total-amount {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: white;
+  }
+  .min-warn {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #e74c3c;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #fef5f5;
+    border: 1px solid #fcc;
+    border-radius: 4px;
+  }
+  .min-warn.show { display: flex; }
+
+  /* ===== SUBMIT ===== */
+  .submit-section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 16px;
+  }
+  .submit-notes { margin-bottom: 18px; }
+  .submit-notes p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+    padding-left: 14px;
+    position: relative;
+  }
+  .submit-notes p::before {
+    content: '※';
+    position: absolute;
+    left: 0;
+    color: var(--green-light);
+  }
+  .submit-btn {
+    display: block;
+    width: 100%;
+    background: var(--green-deep);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 16px;
+    font-size: 15px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    letter-spacing: .12em;
+    cursor: pointer;
+    transition: background .2s, transform .15s, opacity .2s;
+  }
+  .submit-btn:hover:not(:disabled) { background: var(--green-mid); transform: translateY(-1px); }
+  .submit-btn:disabled { opacity: .45; cursor: not-allowed; }
+
+  /* ===== SUCCESS ===== */
+  .success-wrap {
+    display: none;
+    text-align: center;
+    padding: 72px 24px;
+  }
+  .success-circle {
+    width: 72px; height: 72px;
+    background: var(--green-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 32px;
+    color: white;
+  }
+  .success-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--green-deep);
+    margin-bottom: 14px;
+  }
+  .success-body { font-size: 13.5px; color: var(--muted); line-height: 2; margin-bottom: 32px; }
+  .back-link {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--green-mid);
+    text-decoration: none;
+    border-bottom: 1px solid var(--green-light);
+    padding-bottom: 2px;
+  }
+
+  /* ===== FOOTER ===== */
+  .foot {
+    text-align: center;
+    padding: 32px 0 0;
+    font-size: 11.5px;
+    color: var(--muted);
+    letter-spacing: .1em;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 480px) {
+    .form-row { grid-template-columns: 1fr; gap: 0; margin-bottom: 0; }
+    .form-row .form-field { margin-bottom: 16px; }
+    .order-item { grid-template-columns: 1fr; }
+    .hero { padding: 40px 20px 36px; }
+    .form-group { padding: 22px 16px 18px; }
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    .site-header { position: static; }
+    .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .total-panel { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="十干茶_卸売ガイド.html" class="header-back">← ガイドに戻る</a>
+  <span class="header-brand">KAMPO STAND</span>
+</header>
+
+<div class="hero">
+  <div class="hero-badge">STUDENTS ONLY</div>
+  <h1>卸売注文フォーム</h1>
+  <p class="hero-sub">受講生専用 &nbsp;｜&nbsp; 十干茶 全10種</p>
+</div>
+
+<div class="progress-bar-wrap">
+  <div class="progress-steps">
+    <div class="step active" id="step1">
+      <div class="step-dot">1</div>
+      <span class="step-label">注文入力</span>
+    </div>
+    <div class="step" id="step2">
+      <div class="step-dot">2</div>
+      <span class="step-label">確認</span>
+    </div>
+    <div class="step" id="step3">
+      <div class="step-dot">3</div>
+      <span class="step-label">完了</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <form id="order-form" onsubmit="handleSubmit(event)" novalidate>
+
+    <!-- 基本情報 -->
+    <div class="form-group">
+      <div class="form-group-title">基本情報</div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">お名前 <span class="required">必須</span></label>
+          <input type="text" class="form-input" id="name" placeholder="山田 花子" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label">受講コース名 <span class="required">必須</span></label>
+          <input type="text" class="form-input" id="course" placeholder="漢方占い中級講座" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">メールアドレス <span class="required">必須</span></label>
+          <input type="email" class="form-input" id="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label">電話番号 <span class="optional">任意</span></label>
+          <input type="tel" class="form-input" id="tel" placeholder="090-0000-0000">
+        </div>
+      </div>
+    </div>
+
+    <!-- 注文内容 -->
+    <div class="form-group">
+      <div class="form-group-title">ご注文内容</div>
+      <p class="form-group-note">合計5,000円（税込）以上からご注文いただけます。商品と十干の種類を選んでください。</p>
+
+      <div class="order-items" id="order-items">
+        <!-- JS で生成 -->
+      </div>
+
+      <button type="button" class="add-item-btn" onclick="addItem()">＋ 商品を追加する</button>
+
+      <div class="total-panel" style="margin-top:18px;">
+        <span class="total-label">合計金額（税込）</span>
+        <span class="total-amount" id="grand-total">—</span>
+      </div>
+      <div class="min-warn" id="min-warn">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        最低注文金額（5,000円）に達していません
+      </div>
+    </div>
+
+    <!-- 配送先 -->
+    <div class="form-group">
+      <div class="form-group-title">配送先</div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">郵便番号 <span class="required">必須</span></label>
+          <input type="text" class="form-input" id="zip" placeholder="000-0000" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label">都道府県 <span class="required">必須</span></label>
+          <div class="select-wrap">
+            <select class="form-select" id="pref" required onchange="markSelected(this)">
+              <option value="">選択してください</option>
+              <option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option>
+              <option>茨城県</option><option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option><option>東京都</option><option>神奈川県</option>
+              <option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option>
+              <option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option>
+              <option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option>
+              <option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option><option>佐賀県</option><option>長崎県</option>
+              <option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-label">市区町村・番地 <span class="required">必須</span></label>
+        <input type="text" class="form-input" id="address1" placeholder="渋谷区〇〇 1-2-3" required>
+      </div>
+      <div class="form-field" style="margin-top:14px;">
+        <label class="form-label">建物名・部屋番号 <span class="optional">任意</span></label>
+        <input type="text" class="form-input" id="address2" placeholder="〇〇ビル 101">
+      </div>
+    </div>
+
+    <!-- 備考 -->
+    <div class="form-group">
+      <div class="form-group-title">備考・ご要望</div>
+      <textarea class="form-textarea" id="remarks" placeholder="在庫確認や、その他ご不明点などあればご記入ください。"></textarea>
+    </div>
+
+    <!-- 送信 -->
+    <div class="submit-section">
+      <div class="submit-notes">
+        <p>送信後、入力いただいたメールアドレスに確認メールをお送りします。</p>
+        <p>在庫状況により、ご希望に添えない場合がございます。</p>
+        <p>発送は毎週火曜日・金曜日の週2回です。</p>
+      </div>
+      <button type="submit" class="submit-btn" id="submit-btn">注文内容を送信する →</button>
+    </div>
+
+  </form>
+
+  <!-- 完了 -->
+  <div class="success-wrap" id="success-wrap">
+    <div class="success-circle">✓</div>
+    <p class="success-title">ご注文を受け付けました</p>
+    <p class="success-body">
+      3営業日以内にメールにてご連絡いたします。<br>
+      しばらくお待ちください。
+    </p>
+    <a href="十干茶_卸売ガイド.html" class="back-link">← 卸売ガイドに戻る</a>
+  </div>
+
+  <div class="foot">
+    KAMPO STAND &nbsp;｜&nbsp; 受講生専用 &nbsp;｜&nbsp; 2026年4月1日改定版
+  </div>
+</div>
+
+<script>
+const PRODUCTS = [
+  { label: '-- 商品を選択してください --', value: 0, group: '' },
+  { label: '1包パッケージ（卸値 200円）', value: 200, group: 'A' },
+  { label: '7包パッケージ（卸値 1,287円）', value: 1287, group: 'A' },
+  { label: '15包パッケージ（卸値 2,587円）', value: 2587, group: 'A' },
+  { label: '30包パッケージ（卸値 4,875円）', value: 4875, group: 'A' },
+  { label: '15包バルク（卸値 2,250円）', value: 2250, group: 'B' },
+  { label: '30包バルク（卸値 4,500円）', value: 4500, group: 'B' },
+  { label: '50包バルク（卸値 7,500円）', value: 7500, group: 'B' },
+];
+const JIKKAN = ['甲（きのえ）','乙（きのと）','丙（ひのえ）','丁（ひのと）','戊（つちのえ）','己（つちのと）','庚（かのえ）','辛（かのと）','壬（みずのえ）','癸（みずのと）'];
+
+let itemCount = 0;
+
+function buildProductSelect(id) {
+  let html = `<select class="form-select product-select" id="${id}" onchange="onProductChange(this)" required>`;
+  let lastGroup = '';
+  PRODUCTS.forEach(p => {
+    if (p.group && p.group !== lastGroup) {
+      if (lastGroup) html += '</optgroup>';
+      html += `<optgroup label="【${p.group}】${p.group === 'A' ? 'パッケージ商品' : 'バルク商品'}">`;
+      lastGroup = p.group;
+    }
+    html += `<option value="${p.value}"${p.value === 0 ? ' disabled selected' : ''}>${p.label}</option>`;
+  });
+  if (lastGroup) html += '</optgroup>';
+  html += '</select>';
+  return html;
+}
+
+function buildJikkanSelect(id) {
+  let html = `<select class="form-select jikkan-select" id="${id}" onchange="markSelected(this)" required>`;
+  html += `<option value="" disabled selected>-- 十干を選択 --</option>`;
+  JIKKAN.forEach(j => { html += `<option value="${j}">${j}</option>`; });
+  html += '</select>';
+  return html;
+}
+
+function addItem() {
+  itemCount++;
+  const n = itemCount;
+  const container = document.getElementById('order-items');
+  const div = document.createElement('div');
+  div.className = 'order-item';
+  div.id = `item-${n}`;
+  div.innerHTML = `
+    <div class="order-item-num">商品 ${n}</div>
+    ${n > 1 ? `<button type="button" class="delete-btn" onclick="removeItem(${n})" title="削除">×</button>` : ''}
+    <div class="form-field">
+      <label class="form-label" style="font-size:11.5px;color:var(--muted);">商品名</label>
+      <div class="select-wrap">${buildProductSelect('prod-' + n)}</div>
+    </div>
+    <div class="form-field">
+      <label class="form-label" style="font-size:11.5px;color:var(--muted);">種類（十干）</label>
+      <div class="select-wrap">${buildJikkanSelect('jikkan-' + n)}</div>
+    </div>
+    <div class="form-field" style="grid-column:1/-1;">
+      <label class="form-label" style="font-size:11.5px;color:var(--muted);">数量</label>
+      <div class="qty-row">
+        <button type="button" class="qty-btn" onclick="changeQty(${n}, -1)">−</button>
+        <input type="number" class="qty-input" id="qty-${n}" value="1" min="1" max="99" onchange="calcAll()">
+        <button type="button" class="qty-btn" onclick="changeQty(${n}, 1)">＋</button>
+      </div>
+    </div>
+    <div class="order-item-subtotal">
+      <span class="subtotal-label">小計</span>
+      <span class="subtotal-amount" id="sub-${n}">—</span>
+    </div>
+  `;
+  container.appendChild(div);
+  calcAll();
+}
+
+function removeItem(n) {
+  const el = document.getElementById('item-' + n);
+  if (el) el.remove();
+  calcAll();
+}
+
+function changeQty(n, delta) {
+  const input = document.getElementById('qty-' + n);
+  const val = Math.max(1, Math.min(99, (parseInt(input.value) || 1) + delta));
+  input.value = val;
+  calcAll();
+}
+
+function onProductChange(sel) {
+  markSelected(sel);
+  calcAll();
+}
+
+function markSelected(sel) {
+  sel.dataset.selected = sel.value ? 'true' : 'false';
+}
+
+function calcAll() {
+  let sum = 0;
+  document.querySelectorAll('.order-item').forEach(item => {
+    const id = item.id.replace('item-', '');
+    const prod = document.getElementById('prod-' + id);
+    const qty  = parseInt(document.getElementById('qty-' + id)?.value) || 1;
+    const price = parseInt(prod?.value) || 0;
+    const sub = price * qty;
+    const subEl = document.getElementById('sub-' + id);
+    if (subEl) subEl.textContent = sub ? sub.toLocaleString() + '円' : '—';
+    sum += sub;
+  });
+  const totalEl = document.getElementById('grand-total');
+  const warnEl  = document.getElementById('min-warn');
+  const btn     = document.getElementById('submit-btn');
+  if (sum > 0) {
+    totalEl.textContent = sum.toLocaleString() + '円';
+    if (sum < 5000) { warnEl.classList.add('show'); btn.disabled = true; }
+    else            { warnEl.classList.remove('show'); btn.disabled = false; }
+  } else {
+    totalEl.textContent = '—';
+    warnEl.classList.remove('show');
+    btn.disabled = false;
+  }
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = '送信中…';
+  btn.disabled = true;
+  // ▼ ここにGoogleフォームへのfetch、またはGASエンドポイントへのPOSTを実装
+  setTimeout(() => {
+    document.getElementById('order-form').style.display = 'none';
+    document.getElementById('success-wrap').style.display = 'block';
+    // プログレス更新
+    document.getElementById('step1').className = 'step done';
+    document.getElementById('step2').className = 'step done';
+    document.getElementById('step3').className = 'step active';
+  }, 1200);
+}
+
+// 初期化
+addItem();
+</script>
+</body>
+</html>
