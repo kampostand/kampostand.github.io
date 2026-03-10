@@ -695,9 +695,10 @@
     <!-- 送信 -->
     <div class="submit-section">
       <div class="submit-notes">
+        <p>お仕事用はもちろん、ご自身用のご購入も歓迎します。</p>
+        <p>ご注文確認後、送料込みの合計金額とお振込先をLINEにてご連絡いたします。お支払いは1週間以内に銀行振込でお願いします。</p>
         <p>送信後、入力いただいたメールアドレスに確認メールをお送りします。</p>
         <p>在庫状況により、ご希望に添えない場合がございます。</p>
-        <p>発送は毎週火曜日・金曜日の週2回です。</p>
       </div>
       <button type="submit" class="submit-btn" id="submit-btn">注文内容を送信する →</button>
     </div>
@@ -854,6 +855,44 @@ function calcAll() {
 function handleSubmit(e) {
   e.preventDefault();
   const btn = document.getElementById('submit-btn');
+
+  // 必須項目チェック
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const tel = document.getElementById('tel').value.trim();
+  const zip = document.getElementById('zip').value.trim();
+  const pref = document.getElementById('pref').value;
+  const address1 = document.getElementById('address1').value.trim();
+
+  if (!name || !email || !tel || !zip || !pref || !address1) {
+    alert('お名前・メールアドレス・電話番号・配送先は必須です。');
+    return;
+  }
+
+  // 注文内容チェック（1つ以上商品が選ばれ、合計数量が1以上）
+  let hasItem = false;
+  document.querySelectorAll('.order-item').forEach(item => {
+    const n = item.id.replace('item-', '');
+    const prod = document.getElementById('prod-' + n);
+    if (!prod || !prod.value) return;
+    JIKKAN.forEach((j, i) => {
+      const qty = parseInt(document.getElementById('jqty-' + n + '-' + i)?.value) || 0;
+      if (qty > 0) hasItem = true;
+    });
+  });
+  if (!hasItem) {
+    alert('商品を選択し、1つ以上の数量を入力してください。');
+    return;
+  }
+
+  // 合計金額チェック
+  const totalText = document.getElementById('grand-total').textContent;
+  const totalNum = parseInt(totalText.replace(/[^0-9]/g, '')) || 0;
+  if (totalNum < 5000) {
+    alert('合計金額が5,000円に達していません。');
+    return;
+  }
+
   btn.textContent = '送信中…';
   btn.disabled = true;
 
