@@ -14,21 +14,17 @@
   --green-pale:  #d8ede3;
   --green-faint: #f0f8f3;
   --gold:        #b5934a;
-  --gold-light:  #f5ecd6;
   --ink:         #1e1e1e;
   --text:        #3a3a3a;
   --muted:       #6b6b6b;
   --border:      #c8ddd2;
   --bg:          #fafcfb;
-
-  /* 五行カラー */
   --wood:  #4a7c59;
   --fire:  #c0392b;
   --earth: #b5934a;
   --metal: #7f8c8d;
   --water: #2c3e7a;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { color-scheme: light only; overflow-x: hidden; }
 body {
@@ -40,416 +36,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== HEADER ===== */
-.site-header {
-  background: var(--green-deep);
-  padding: 11px 0;
-  text-align: center;
-  letter-spacing: .28em;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.site-header span { font-size: 10.5px; color: rgba(255,255,255,.45); font-weight: 300; }
-
-/* ===== HERO ===== */
-.hero {
-  background: var(--green-deep);
-  color: white;
-  padding: 80px 48px 72px;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 60% 80% at 20% 0%,   rgba(82,183,136,.18) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 60% at 85% 100%,  rgba(181,147,74,.14) 0%, transparent 50%);
-  pointer-events: none;
-}
-.hero-eyebrow {
-  font-size: 10.5px;
-  letter-spacing: .38em;
-  color: var(--green-light);
-  margin-bottom: 22px;
-  opacity: 0;
-  animation: fadeUp .5s .05s ease forwards;
-}
-.hero h1 {
-  font-family: 'Shippori Mincho', serif;
-  font-size: clamp(32px, 5vw, 52px);
-  font-weight: 600;
-  letter-spacing: .08em;
-  line-height: 1.3;
-  margin-bottom: 10px;
-  opacity: 0;
-  animation: fadeUp .55s .12s ease forwards;
-}
-.hero-sub {
-  font-size: clamp(13px, 2vw, 15px);
-  color: rgba(255,255,255,.5);
-  letter-spacing: .06em;
-  font-weight: 300;
-  margin-top: 18px;
-  opacity: 0;
-  animation: fadeUp .55s .2s ease forwards;
-}
-.hero-rule {
-  width: 40px; height: 1px;
-  background: var(--green-light);
-  margin: 26px auto;
-  opacity: 0;
-  animation: fadeUp .5s .17s ease forwards;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== PAGE ===== */
-.page {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* ===== CONCEPT ===== */
-.concept {
-  padding: 72px 0 64px;
-  border-bottom: 1px solid var(--border);
-}
-.section-eyebrow {
-  font-size: 10px;
-  letter-spacing: .32em;
-  color: var(--green-light);
-  margin-bottom: 16px;
-  font-weight: 500;
-}
-.section-title {
-  font-family: 'Shippori Mincho', serif;
-  font-size: clamp(20px, 3vw, 26px);
-  font-weight: 600;
-  color: var(--green-deep);
-  line-height: 1.5;
-  margin-bottom: 24px;
-  letter-spacing: .04em;
-}
-.concept-body {
-  font-size: 14.5px;
-  line-height: 2.1;
-  color: var(--text);
-  max-width: 680px;
-}
-.concept-body p { margin-bottom: 16px; }
-.concept-body p:last-child { margin-bottom: 0; }
-
-/* ===== HOW TO ===== */
-.howto {
-  padding: 64px 0;
-  border-bottom: 1px solid var(--border);
-}
-.howto-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 32px;
-}
-.howto-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 26px 22px;
-  position: relative;
-}
-.howto-num {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 36px;
-  font-weight: 400;
-  color: var(--green-pale);
-  line-height: 1;
-  margin-bottom: 12px;
-  letter-spacing: -.02em;
-}
-.howto-title {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--green-deep);
-  margin-bottom: 8px;
-  line-height: 1.5;
-}
-.howto-body { font-size: 12.5px; color: var(--muted); line-height: 1.85; }
-
-/* ===== CATALOG ===== */
-.catalog { padding: 64px 0 0; }
-.catalog-intro {
-  font-size: 14px;
-  color: var(--muted);
-  margin-bottom: 40px;
-  line-height: 1.9;
-}
-
-/* 五行フィルター */
-.filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 36px;
-}
-.filter-btn {
-  border: 1px solid var(--border);
-  background: white;
-  font-size: 11.5px;
-  font-family: 'Noto Sans JP', sans-serif;
-  color: var(--muted);
-  padding: 5px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  letter-spacing: .08em;
-  transition: all .18s;
-}
-.filter-btn:hover { border-color: var(--green-mid); color: var(--green-mid); }
-.filter-btn.active { background: var(--green-deep); color: white; border-color: var(--green-deep); }
-
-/* 十干カード */
-.tea-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-bottom: 64px;
-}
-.tea-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform .2s, box-shadow .2s;
-  display: flex;
-  flex-direction: column;
-}
-.tea-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(26,61,43,.1);
-}
-.tea-card-top {
-  padding: 22px 22px 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-}
-.tea-kanji {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 42px;
-  font-weight: 600;
-  line-height: 1;
-  flex-shrink: 0;
-  width: 52px;
-  text-align: center;
-}
-.tea-meta { flex: 1; }
-.tea-name {
-  font-size: 11px;
-  letter-spacing: .18em;
-  color: var(--muted);
-  margin-bottom: 4px;
-}
-.tea-title {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--green-deep);
-  margin-bottom: 6px;
-  line-height: 1.4;
-}
-.tea-go-badge {
-  display: inline-block;
-  font-size: 10px;
-  padding: 2px 10px;
-  border-radius: 10px;
-  letter-spacing: .1em;
-  font-weight: 500;
-  color: white;
-}
-.go-wood  { background: var(--wood); }
-.go-fire  { background: var(--fire); }
-.go-earth { background: var(--earth); }
-.go-metal { background: var(--metal); }
-.go-water { background: var(--water); }
-
-.tea-card-body { padding: 16px 22px 0; flex: 1; }
-.tea-ingredients {
-  font-size: 11.5px;
-  color: var(--green-mid);
-  font-weight: 500;
-  letter-spacing: .06em;
-  margin-bottom: 8px;
-}
-.tea-effect {
-  font-size: 13px;
-  color: var(--text);
-  line-height: 1.8;
-  margin-bottom: 10px;
-}
-.tea-constitution {
-  background: var(--green-faint);
-  border-left: 3px solid var(--green-light);
-  padding: 10px 12px;
-  border-radius: 0 4px 4px 0;
-  font-size: 12px;
-  color: var(--text);
-  line-height: 1.8;
-  margin-bottom: 12px;
-}
-.tea-constitution-label {
-  font-size: 10.5px;
-  letter-spacing: .12em;
-  color: var(--muted);
-  margin-bottom: 4px;
-  font-weight: 500;
-}
-.tea-food {
-  font-size: 11.5px;
-  color: var(--muted);
-  line-height: 1.7;
-  padding-bottom: 4px;
-}
-.tea-food strong { color: var(--text); font-weight: 500; }
-
-.tea-card-footer {
-  padding: 14px 22px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid var(--border);
-  margin-top: 14px;
-}
-.tea-store-link {
-  font-size: 11.5px;
-  color: var(--green-mid);
-  text-decoration: none;
-  letter-spacing: .06em;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: color .15s;
-}
-.tea-store-link:hover { color: var(--green-deep); }
-.tea-store-link svg { width: 12px; height: 12px; }
-
-/* ===== USAGE ===== */
-.usage {
-  background: var(--green-deep);
-  color: white;
-  padding: 64px 48px;
-  margin: 0 -24px;
-  position: relative;
-  overflow: hidden;
-}
-.usage::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 80% at 90% 10%, rgba(82,183,136,.15) 0%, transparent 55%);
-  pointer-events: none;
-}
-.usage-eyebrow { font-size: 10px; letter-spacing: .32em; color: var(--green-light); margin-bottom: 14px; }
-.usage-title {
-  font-family: 'Shippori Mincho', serif;
-  font-size: clamp(19px, 3vw, 24px);
-  font-weight: 600;
-  margin-bottom: 32px;
-  line-height: 1.5;
-}
-.usage-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-bottom: 48px;
-}
-.usage-card {
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 8px;
-  padding: 24px 22px;
-}
-.usage-card-num {
-  font-size: 10px;
-  letter-spacing: .24em;
-  color: var(--green-light);
-  margin-bottom: 10px;
-}
-.usage-card-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 10px;
-  line-height: 1.5;
-}
-.usage-card-body { font-size: 12.5px; color: rgba(255,255,255,.65); line-height: 1.9; }
-
-/* ===== CTA ===== */
-.cta-section {
-  padding: 64px 0 80px;
-  text-align: center;
-}
-.cta-label { font-size: 10.5px; letter-spacing: .32em; color: var(--muted); margin-bottom: 14px; }
-.cta-title {
-  font-family: 'Shippori Mincho', serif;
-  font-size: clamp(17px, 2.5vw, 21px);
-  color: var(--green-deep);
-  font-weight: 600;
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-.cta-sub { font-size: 13px; color: var(--muted); margin-bottom: 32px; }
-.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.cta-btn-primary {
-  display: inline-block;
-  background: var(--green-deep);
-  color: white;
-  font-size: 13.5px;
-  font-weight: 500;
-  letter-spacing: .1em;
-  padding: 14px 36px;
-  border-radius: 3px;
-  text-decoration: none;
-  transition: background .2s, transform .18s;
-}
-.cta-btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); }
-.cta-btn-secondary {
-  display: inline-block;
-  background: white;
-  color: var(--green-deep);
-  font-size: 13.5px;
-  font-weight: 500;
-  letter-spacing: .1em;
-  padding: 13px 36px;
-  border-radius: 3px;
-  text-decoration: none;
-  border: 1px solid var(--green-deep);
-  transition: background .2s, transform .18s;
-}
-.cta-btn-secondary:hover { background: var(--green-faint); transform: translateY(-2px); }
-
-/* ===== FOOTER ===== */
-.foot {
-  text-align: center;
-  padding: 0 0 32px;
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: .14em;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 640px) {
-  .hero { padding: 60px 24px 56px; }
-  .howto-grid { grid-template-columns: 1fr; }
-  .tea-grid { grid-template-columns: 1fr; }
-  .usage { padding: 52px 24px; margin: 0 -24px; }
-  .usage-grid { grid-template-columns: 1fr; }
-  .cta-section { padding: 52px 0 64px; }
-}
+/* ===== NAV ===== */
   .site-nav {
     background: var(--green-deep);
     position: sticky;
@@ -497,10 +84,305 @@ body {
     .nav-logo { font-size: 10px; letter-spacing: .14em; }
     .nav-link { font-size: 10px; padding: 5px 7px; }
   }
-</style>
 
+/* ===== HERO ===== */
+.hero {
+  background: var(--green-deep);
+  color: white;
+  padding: 72px 48px 64px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 20% 0%, rgba(82,183,136,.18) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 60% at 85% 100%, rgba(181,147,74,.14) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: 10.5px; letter-spacing: .38em; color: var(--green-light);
+  margin-bottom: 20px;
+  animation: fadeUp .5s .05s ease both;
+}
+.hero h1 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 600; letter-spacing: .08em; line-height: 1.3;
+  margin-bottom: 8px;
+  animation: fadeUp .55s .12s ease both;
+}
+.hero-sub {
+  font-size: 13px; color: rgba(255,255,255,.5); letter-spacing: .06em;
+  font-weight: 300; margin-top: 16px;
+  animation: fadeUp .55s .2s ease both;
+}
+.hero-rule { width: 36px; height: 1px; background: var(--green-light); margin: 22px auto; opacity: .6; animation: fadeUp .5s .17s ease both; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== PAGE ===== */
+.page { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== CONCEPT ===== */
+.concept { padding: 64px 0 56px; border-bottom: 1px solid var(--border); }
+.section-eyebrow { font-size: 10px; letter-spacing: .32em; color: var(--green-light); margin-bottom: 14px; font-weight: 500; }
+.section-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(19px, 3vw, 24px);
+  font-weight: 600; color: var(--green-deep);
+  line-height: 1.5; margin-bottom: 22px; letter-spacing: .04em;
+}
+.concept-body { font-size: 14px; line-height: 2.1; color: var(--text); max-width: 700px; }
+.concept-body p { margin-bottom: 14px; }
+.concept-body p:last-child { margin-bottom: 0; }
+
+/* ===== FILTER ===== */
+.filter-wrap { padding: 40px 0 0; }
+.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+.filter-btn {
+  border: 1px solid var(--border); background: white;
+  font-size: 11.5px; font-family: 'Noto Sans JP', sans-serif;
+  color: var(--muted); padding: 5px 16px; border-radius: 20px;
+  cursor: pointer; letter-spacing: .08em; transition: all .18s;
+}
+.filter-btn:hover { border-color: var(--green-mid); color: var(--green-mid); }
+.filter-btn.active { background: var(--green-deep); color: white; border-color: var(--green-deep); }
+
+/* ===== TEA DETAIL CARDS ===== */
+.tea-list { display: flex; flex-direction: column; gap: 48px; padding-bottom: 72px; }
+
+.tea-detail {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: white;
+  overflow: hidden;
+}
+
+.tea-detail-header {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+}
+.tea-kanji-block {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0;
+  flex-shrink: 0;
+}
+.tea-kanji {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 1;
+}
+.tea-yomi {
+  font-size: 10px;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.tea-header-body {
+  flex: 1;
+  padding: 20px 24px;
+  border-left: 1px solid var(--border);
+}
+.tea-go-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.tea-go-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 10px;
+  border-radius: 10px;
+  letter-spacing: .1em;
+  font-weight: 500;
+  color: white;
+}
+.go-wood  { background: var(--wood); }
+.go-fire  { background: var(--fire); }
+.go-earth { background: var(--earth); }
+.go-metal { background: var(--metal); }
+.go-water { background: var(--water); }
+
+.tea-type-tag {
+  font-size: 10.5px;
+  color: var(--muted);
+  letter-spacing: .1em;
+}
+.tea-blend-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--green-deep);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.tea-main-ingredients {
+  font-size: 12px;
+  color: var(--green-mid);
+  font-weight: 500;
+  letter-spacing: .06em;
+}
+
+/* ===== TEA BODY ===== */
+.tea-detail-body { padding: 24px 28px; }
+
+.tea-catchcopy {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text);
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tea-kinou {
+  background: var(--green-faint);
+  border-left: 3px solid var(--green-light);
+  padding: 10px 14px;
+  border-radius: 0 4px 4px 0;
+  font-size: 12.5px;
+  color: var(--green-deep);
+  font-weight: 500;
+  letter-spacing: .04em;
+  margin-bottom: 22px;
+}
+.tea-kinou-label {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--muted);
+  margin-bottom: 3px;
+  font-weight: 400;
+}
+
+.ingredients-title {
+  font-size: 10.5px;
+  letter-spacing: .22em;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.ingredient-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 13px 14px;
+}
+.ingredient-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.ingredient-kinou {
+  font-size: 10.5px;
+  color: var(--green-mid);
+  font-weight: 500;
+  letter-spacing: .06em;
+  margin-bottom: 5px;
+}
+.ingredient-desc {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.tea-detail-footer {
+  padding: 16px 28px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.tea-store-link {
+  font-size: 12px;
+  color: var(--green-mid);
+  text-decoration: none;
+  letter-spacing: .06em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color .15s;
+}
+.tea-store-link:hover { color: var(--green-deep); }
+.tea-store-link svg { width: 12px; height: 12px; }
+
+/* ===== CTA ===== */
+.cta-section {
+  background: var(--green-deep);
+  color: white;
+  padding: 56px 48px;
+  margin: 0 -24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 120%, rgba(82,183,136,.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cta-label { font-size: 10.5px; letter-spacing: .32em; color: rgba(255,255,255,.4); margin-bottom: 14px; }
+.cta-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(17px, 2.5vw, 21px);
+  color: white; font-weight: 500; margin-bottom: 28px; line-height: 1.65;
+}
+.cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-btn-primary {
+  display: inline-block; background: var(--green-light); color: white;
+  font-size: 13.5px; font-weight: 500; letter-spacing: .1em;
+  padding: 13px 34px; border-radius: 3px; text-decoration: none;
+  transition: background .2s, transform .18s;
+}
+.cta-btn-primary:hover { background: #3da876; transform: translateY(-2px); }
+.cta-btn-secondary {
+  display: inline-block; background: rgba(255,255,255,.1); color: white;
+  font-size: 13.5px; font-weight: 400; letter-spacing: .1em;
+  padding: 12px 34px; border-radius: 3px; text-decoration: none;
+  border: 1px solid rgba(255,255,255,.3);
+  transition: background .2s, transform .18s;
+}
+.cta-btn-secondary:hover { background: rgba(255,255,255,.18); transform: translateY(-2px); }
+
+/* ===== FOOTER ===== */
+.foot { text-align: center; padding: 32px 0; font-size: 11px; color: var(--muted); letter-spacing: .14em; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .hero { padding: 56px 24px 52px; }
+  .tea-detail-header { flex-direction: column; }
+  .tea-kanji-block { width: 100%; flex-direction: row; gap: 14px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+  .tea-kanji-block .tea-yomi { margin-top: 0; }
+  .tea-header-body { border-left: none; padding: 16px 20px; }
+  .tea-detail-body { padding: 18px 20px; }
+  .tea-detail-footer { padding: 14px 20px; }
+  .ingredients-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 48px 24px; margin: 0 -24px; }
+}
+</style>
 </head>
 <body>
+
 <nav class="site-nav">
   <div class="nav-inner">
     <a href="jikkan-tea.html" class="nav-logo">KAMPO STAND</a>
@@ -512,13 +394,11 @@ body {
   </div>
 </nav>
 
-
-<!-- HERO -->
 <div class="hero">
   <p class="hero-eyebrow">JIKKAN TEA</p>
   <h1>十干茶</h1>
   <div class="hero-rule"></div>
-  <p class="hero-sub">生まれ持つ宿命と体質に寄り添う、10種の漢方ブレンドティー</p>
+  <p class="hero-sub">中医学・薬膳の観点による、体質別ブレンドハーブティー全10種</p>
 </div>
 
 <div class="page">
@@ -534,34 +414,10 @@ body {
     </div>
   </div>
 
-  <!-- HOW TO USE -->
-  <div class="howto">
-    <p class="section-eyebrow">HOW TO USE</p>
-    <h2 class="section-title">漢方占いとの組み合わせ方</h2>
-    <div class="howto-grid">
-      <div class="howto-card">
-        <div class="howto-num">01</div>
-        <div class="howto-title">日干を確認する</div>
-        <div class="howto-body">生まれた日から「日干」を調べます。お客様の四柱推命の鑑定結果から、甲〜癸のどれかを確認してください。</div>
-      </div>
-      <div class="howto-card">
-        <div class="howto-num">02</div>
-        <div class="howto-title">体質のクセを読む</div>
-        <div class="howto-body">日干ごとの五行属性から、生まれ持つ体質の傾向と、崩れやすいバランスを把握します。現在の気血水の状態と照らし合わせて深めます。</div>
-      </div>
-      <div class="howto-card">
-        <div class="howto-num">03</div>
-        <div class="howto-title">お茶として処方する</div>
-        <div class="howto-body">その日干に対応するブレンドを「処方茶」としてご提案します。鑑定に形を与え、継続的な養生へとつなげます。</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CATALOG -->
-  <div class="catalog">
+  <!-- FILTER + LIST -->
+  <div class="filter-wrap">
     <p class="section-eyebrow">CATALOG</p>
-    <h2 class="section-title">十干茶 全10種</h2>
-    <p class="catalog-intro">五行フィルターで絞り込めます。</p>
+    <h2 class="section-title" style="margin-bottom:24px;">十干茶 全10種</h2>
 
     <div class="filter-bar">
       <button class="filter-btn active" onclick="filterTea('all', this)">すべて</button>
@@ -572,28 +428,55 @@ body {
       <button class="filter-btn" onclick="filterTea('water', this)">水（すい）</button>
     </div>
 
-    <div class="tea-grid" id="tea-grid">
+    <div class="tea-list" id="tea-list">
 
       <!-- 甲 -->
-      <div class="tea-card" data-go="wood">
-        <div class="tea-card-top">
-          <div class="tea-kanji" style="color:var(--wood);">甲</div>
-          <div class="tea-meta">
-            <div class="tea-name">きのえ</div>
-            <div class="tea-title">きのえブレンド</div>
-            <span class="tea-go-badge go-wood">木＋ 陽</span>
+      <div class="tea-detail" data-go="wood">
+        <div class="tea-detail-header">
+          <div class="tea-kanji-block">
+            <div class="tea-kanji" style="color:var(--wood);">甲</div>
+            <div class="tea-yomi">きのえ</div>
+          </div>
+          <div class="tea-header-body">
+            <div class="tea-go-row">
+              <span class="tea-go-badge go-wood">木＋ 陽</span>
+              <span class="tea-type-tag">肝実・イライラタイプ</span>
+            </div>
+            <div class="tea-blend-name">きのえブレンド</div>
+            <div class="tea-main-ingredients">菊花茶 × 2種のミント</div>
           </div>
         </div>
-        <div class="tea-card-body">
-          <div class="tea-ingredients">菊花・レモングラス・2種のミント</div>
-          <div class="tea-effect">菊花の涼やかさとミントの香りが、上へのぼった熱をスッと引き下げ、イライラを鎮めてくれます。</div>
-          <div class="tea-constitution">
-            <div class="tea-constitution-label">体質のクセ（肝実・イライラタイプ）</div>
-            自律神経（肝）が強まり気が上りやすい。ストレスでイライラ、頭痛、肩こり、目の充血が出やすい。
+        <div class="tea-detail-body">
+          <div class="tea-catchcopy">清々しい香りとほんのり甘い菊花に、2種のミントとレモングラスが、さっぱりリフレッシュさせてくれるお茶。ストレスがたまってイライラしてしまう時や、気持ちをスーッと落ち着かせたい時に。</div>
+          <div class="tea-kinou">
+            <div class="tea-kinou-label">はたらき</div>
+            清熱・平肝 ── 上にのぼった熱を冷まし、高ぶった自律神経を鎮めます
           </div>
-          <div class="tea-food"><strong>養生食材：</strong>レモン、みかん、トマト、梅干し、酢のもの、パイナップル、キウイ</div>
+          <div class="ingredients-title">INGREDIENTS</div>
+          <div class="ingredients-grid">
+            <div class="ingredient-card">
+              <div class="ingredient-name">菊花</div>
+              <div class="ingredient-kinou">清肝明目</div>
+              <div class="ingredient-desc">肝の熱を冷まし、頭に上った熱やイライラを鎮める。目の充血にも使われる代表的な清熱薬。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">スペアミント</div>
+              <div class="ingredient-kinou">疎散風熱・理気</div>
+              <div class="ingredient-desc">こもった熱を外へ逃がし、気の滞りをスムーズに整える。清涼感のある辛味が表熱を発散させ、頭部の熱感を和らげる。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">ペパーミント</div>
+              <div class="ingredient-kinou">疎肝解鬱</div>
+              <div class="ingredient-desc">スペアミントよりも清熱力が強く、のぼせ・熱感に対応。肝気の鬱滞（気の詰まり）を解消する。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">レモングラス</div>
+              <div class="ingredient-kinou">理気・芳香化湿</div>
+              <div class="ingredient-desc">香りの力で気の巡りを整える。軽い利尿作用もあり、熱と湿を同時に取り除く。</div>
+            </div>
+          </div>
         </div>
-        <div class="tea-card-footer">
+        <div class="tea-detail-footer">
           <a href="https://kampotakeru.stores.jp/items/62f733fdbef381335a0f6566" target="_blank" class="tea-store-link">
             STORESで見る
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -602,25 +485,57 @@ body {
       </div>
 
       <!-- 乙 -->
-      <div class="tea-card" data-go="wood">
-        <div class="tea-card-top">
-          <div class="tea-kanji" style="color:var(--wood);">乙</div>
-          <div class="tea-meta">
-            <div class="tea-name">きのと</div>
-            <div class="tea-title">きのとブレンド</div>
-            <span class="tea-go-badge go-wood">木－ 陰</span>
+      <div class="tea-detail" data-go="wood">
+        <div class="tea-detail-header">
+          <div class="tea-kanji-block">
+            <div class="tea-kanji" style="color:var(--wood);">乙</div>
+            <div class="tea-yomi">きのと</div>
+          </div>
+          <div class="tea-header-body">
+            <div class="tea-go-row">
+              <span class="tea-go-badge go-wood">木－ 陰</span>
+              <span class="tea-type-tag">肝虚・うつうつタイプ</span>
+            </div>
+            <div class="tea-blend-name">きのとブレンド</div>
+            <div class="tea-main-ingredients">月桃茶 × レモングラス</div>
           </div>
         </div>
-        <div class="tea-card-body">
-          <div class="tea-ingredients">月桃・バタフライピー・レモングラス</div>
-          <div class="tea-effect">月桃の爽やかさと鮮やかな青色が、気疲れを癒やして心のゆとりを取り戻してくれます。</div>
-          <div class="tea-constitution">
-            <div class="tea-constitution-label">体質のクセ（肝虚・うつうつタイプ）</div>
-            自律神経（肝）のエネルギーが不足。気疲れしやすく、やる気が起きない、朝がつらい、お腹が張りやすい。
+        <div class="tea-detail-body">
+          <div class="tea-catchcopy">すっきり爽やかな月桃とレモングラスに、色あざやかなバタフライピーの青色が、心を癒やして穏やかにしてくれるお茶。気をつかいすぎて気疲れしてしまった時や、ゆっくりと気分転換したい時に。</div>
+          <div class="tea-kinou">
+            <div class="tea-kinou-label">はたらき</div>
+            疎肝理気 ── 不足した肝の働きを補いながら、停滞した気の巡りを促します
           </div>
-          <div class="tea-food"><strong>養生食材：</strong>ほうれん草、小松菜、春菊、ブロッコリー、にんじん、枝豆、レバー</div>
+          <div class="ingredients-title">INGREDIENTS</div>
+          <div class="ingredients-grid">
+            <div class="ingredient-card">
+              <div class="ingredient-name">月桃</div>
+              <div class="ingredient-kinou">芳香化湿・理気</div>
+              <div class="ingredient-desc">南国の爽やかな香りで気の巡りを改善。湿を取り除きながら、沈んだ気持ちを持ち上げる。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">バタフライピー</div>
+              <div class="ingredient-kinou">安神・清肝</div>
+              <div class="ingredient-desc">鮮やかな青色の花。心を落ち着かせる「安神」作用があり、肝の陰（潤い）を補って虚熱を冷ます。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">緑豆</div>
+              <div class="ingredient-kinou">清熱解毒</div>
+              <div class="ingredient-desc">余分な熱を穏やかに冷ます甘涼性の食材。肝虚に生じやすい「ほてり感」をやさしく取り除く。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">ミント</div>
+              <div class="ingredient-kinou">疎散風熱・疎肝</div>
+              <div class="ingredient-desc">気の鬱滞を解消し、沈んだ気持ちを発散させる。月桃・レモングラスと組み合わさり、理気の働きを高める。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">レモングラス</div>
+              <div class="ingredient-kinou">理気・芳香化湿</div>
+              <div class="ingredient-desc">爽やかな香りで気の巡りを整え、気疲れによる停滞をほぐす。湿を取り除く作用もあり、心の重だるさを軽くする。</div>
+            </div>
+          </div>
         </div>
-        <div class="tea-card-footer">
+        <div class="tea-detail-footer">
           <a href="https://kampotakeru.stores.jp/items/631ecccb60bab44fabfbbbcf" target="_blank" class="tea-store-link">
             STORESで見る
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -629,25 +544,57 @@ body {
       </div>
 
       <!-- 丙 -->
-      <div class="tea-card" data-go="fire">
-        <div class="tea-card-top">
-          <div class="tea-kanji" style="color:var(--fire);">丙</div>
-          <div class="tea-meta">
-            <div class="tea-name">ひのえ</div>
-            <div class="tea-title">ひのえブレンド</div>
-            <span class="tea-go-badge go-fire">火＋ 陽</span>
+      <div class="tea-detail" data-go="fire">
+        <div class="tea-detail-header">
+          <div class="tea-kanji-block">
+            <div class="tea-kanji" style="color:var(--fire);">丙</div>
+            <div class="tea-yomi">ひのえ</div>
+          </div>
+          <div class="tea-header-body">
+            <div class="tea-go-row">
+              <span class="tea-go-badge go-fire">火＋ 陽</span>
+              <span class="tea-type-tag">心実・ドキドキタイプ</span>
+            </div>
+            <div class="tea-blend-name">ひのえブレンド</div>
+            <div class="tea-main-ingredients">小豆茶 × ルイボス</div>
           </div>
         </div>
-        <div class="tea-card-body">
-          <div class="tea-ingredients">カカオニブ・小豆・ルイボス</div>
-          <div class="tea-effect">カカオの甘い香りと小豆の優しさが、ドキドキする心を落ち着かせ、深い休息へと誘います。</div>
-          <div class="tea-constitution">
-            <div class="tea-constitution-label">体質のクセ（心実・ドキドキタイプ）</div>
-            循環器（心）が強まり血に熱が起こりやすい。暑がり、汗が多い、顔が赤い、高血圧、炎症に注意。
+        <div class="tea-detail-body">
+          <div class="tea-catchcopy">まるでコーヒーのようなカカオニブの甘い香りに、優しくまろやかな小豆茶とルイボスが、気持ちを落ち着けてくれる赤いお茶。なんだかドキドキして落ち着かない時や、ゆっくりぐっすり休みたい時に。</div>
+          <div class="tea-kinou">
+            <div class="tea-kinou-label">はたらき</div>
+            清心安神 ── 心臓（心）の過剰な熱を冷まし、精神を安定させます
           </div>
-          <div class="tea-food"><strong>養生食材：</strong>ゴーヤー、セロリ、レタス、アスパラガス、ごぼう、緑茶、コーヒー</div>
+          <div class="ingredients-title">INGREDIENTS</div>
+          <div class="ingredients-grid">
+            <div class="ingredient-card">
+              <div class="ingredient-name">カカオニブ</div>
+              <div class="ingredient-kinou">清心火・養心</div>
+              <div class="ingredient-desc">苦味が心の余分な熱（心火）を鎮め、昂った気持ちを落ち着かせる。血流を整えて動悸を緩和。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">小豆</div>
+              <div class="ingredient-kinou">清熱解毒・利水</div>
+              <div class="ingredient-desc">血の熱を冷ましながら、余分な水分も排出する。心の熱によるむくみや動悸のケアに。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">マルベリー（桑の実）</div>
+              <div class="ingredient-kinou">補血・滋陰</div>
+              <div class="ingredient-desc">血と潤いを補い、心の乾きからくる不安感・ドキドキを和らげる。甘涼性で熱証の潤い不足に対応。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">ルイボス</div>
+              <div class="ingredient-kinou">清熱・抗酸化</div>
+              <div class="ingredient-desc">体の酸化ストレスを軽減し、熱による消耗を防ぐ。ノンカフェインで安神効果を妨げず、夜の動悸にも。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">紫蘇</div>
+              <div class="ingredient-kinou">理気・行気</div>
+              <div class="ingredient-desc">気の滞りを解消し、胸のつかえや気分の沈みを和らげる。心の熱証に伴う不快感を発散させる。</div>
+            </div>
+          </div>
         </div>
-        <div class="tea-card-footer">
+        <div class="tea-detail-footer">
           <a href="https://kampotakeru.stores.jp/items/6326ba8723747f2c6461fbec" target="_blank" class="tea-store-link">
             STORESで見る
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -656,25 +603,52 @@ body {
       </div>
 
       <!-- 丁 -->
-      <div class="tea-card" data-go="fire">
-        <div class="tea-card-top">
-          <div class="tea-kanji" style="color:var(--fire);">丁</div>
-          <div class="tea-meta">
-            <div class="tea-name">ひのと</div>
-            <div class="tea-title">ひのとブレンド</div>
-            <span class="tea-go-badge go-fire">火－ 陰</span>
+      <div class="tea-detail" data-go="fire">
+        <div class="tea-detail-header">
+          <div class="tea-kanji-block">
+            <div class="tea-kanji" style="color:var(--fire);">丁</div>
+            <div class="tea-yomi">ひのと</div>
+          </div>
+          <div class="tea-header-body">
+            <div class="tea-go-row">
+              <span class="tea-go-badge go-fire">火－ 陰</span>
+              <span class="tea-type-tag">心虚・はらはらタイプ</span>
+            </div>
+            <div class="tea-blend-name">ひのとブレンド</div>
+            <div class="tea-main-ingredients">黒豆茶 × サフラワー</div>
           </div>
         </div>
-        <div class="tea-card-body">
-          <div class="tea-ingredients">黒豆・アンゼリカリーフ・サフラワー</div>
-          <div class="tea-effect">黒豆の香ばしさと紅花のぬくもりが、滞った心と体をほぐし、やる気をそっと後押しします。</div>
-          <div class="tea-constitution">
-            <div class="tea-constitution-label">体質のクセ（心虚・はらはらタイプ）</div>
-            循環器（心）のエネルギーが不足。手足の冷え、肌の乾燥、不安感、不眠、動悸、息切れが出やすい。
+        <div class="tea-detail-body">
+          <div class="tea-catchcopy">こだわって焙煎した香ばしい黒豆茶に、ぽかぽかさせるサフラワー（紅花）が、ほっこり心と体を和ませてくれるお茶。ぼーっとしてやる気が出ない時や、気温差による体調変化が気になる時に。</div>
+          <div class="tea-kinou">
+            <div class="tea-kinou-label">はたらき</div>
+            補血・活血 ── 不足した血を補い、血流を改善して精神を安定させます
           </div>
-          <div class="tea-food"><strong>養生食材：</strong>牛肉、豚肉、鶏肉、まぐろ、かつお、にんじん、黒豆</div>
+          <div class="ingredients-title">INGREDIENTS</div>
+          <div class="ingredients-grid">
+            <div class="ingredient-card">
+              <div class="ingredient-name">黒豆</div>
+              <div class="ingredient-kinou">補腎滋陰・養血</div>
+              <div class="ingredient-desc">黒色で腎に入り、精と血を補う。気力・活力の低下や不安感に対応する代表的な補血食材。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">当帰葉（アンゼリカ）</div>
+              <div class="ingredient-kinou">補血・活血</div>
+              <div class="ingredient-desc">血を補いながら巡りも良くする、補血薬の代表格。冷えや不安、心の栄養不足に幅広く使われる。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">サフラワー（紅花）</div>
+              <div class="ingredient-kinou">活血化瘀</div>
+              <div class="ingredient-desc">滞った血の流れを動かす力が強い。心虚で停滞しやすい血行を改善し、こわばりや痛みをほぐす。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">紫夏藤（鶏血藤）</div>
+              <div class="ingredient-kinou">活血補血</div>
+              <div class="ingredient-desc">血を補いながら血の滞りも解消する生薬。補血と活血を同時に担い、心虚タイプに不足しがちな血を増やしながら巡りもほぐす。</div>
+            </div>
+          </div>
         </div>
-        <div class="tea-card-footer">
+        <div class="tea-detail-footer">
           <a href="https://kampotakeru.stores.jp/items/6326bcb125c90669144d7165" target="_blank" class="tea-store-link">
             STORESで見る
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -683,25 +657,52 @@ body {
       </div>
 
       <!-- 戊 -->
-      <div class="tea-card" data-go="earth">
-        <div class="tea-card-top">
-          <div class="tea-kanji" style="color:var(--earth);">戊</div>
-          <div class="tea-meta">
-            <div class="tea-name">つちのえ</div>
-            <div class="tea-title">つちのえブレンド</div>
-            <span class="tea-go-badge go-earth">土＋ 陽</span>
+      <div class="tea-detail" data-go="earth">
+        <div class="tea-detail-header">
+          <div class="tea-kanji-block">
+            <div class="tea-kanji" style="color:var(--earth);">戊</div>
+            <div class="tea-yomi">つちのえ</div>
+          </div>
+          <div class="tea-header-body">
+            <div class="tea-go-row">
+              <span class="tea-go-badge go-earth">土＋ 陽</span>
+              <span class="tea-type-tag">脾実・ガツガツタイプ</span>
+            </div>
+            <div class="tea-blend-name">つちのえブレンド</div>
+            <div class="tea-main-ingredients">カモミール茶 × ウコン</div>
           </div>
         </div>
-        <div class="tea-card-body">
-          <div class="tea-ingredients">なつめ・カモミール・麦茶・ターメリック</div>
-          <div class="tea-effect">カモミールの甘い香りとなつめの滋養が、頑張りすぎた心身をゆるめてリラックスさせます。</div>
-          <div class="tea-constitution">
-            <div class="tea-constitution-label">体質のクセ（脾実・ガツガツタイプ）</div>
-            消化器（脾）が強まり胃腸に熱がこもりやすい。食べすぎ、ムカムカ、胃痛、口内炎、便秘が出やすい。
+        <div class="tea-detail-body">
+          <div class="tea-catchcopy">フルーティーな甘い香りのカモミールに、なつめとウコンが気持ちをラクにして、がんばった心と体をほぐしてくれるお茶。ちょっと頑張りすぎて疲れちゃった時や、ゆったりした気分に浸りたい時に。</div>
+          <div class="tea-kinou">
+            <div class="tea-kinou-label">はたらき</div>
+            和胃理気 ── 過剰な食欲や胃の熱を鎮め、消化器の緊張を和らげます
           </div>
-          <div class="tea-food"><strong>養生食材：</strong>白米、じゃがいも、さつまいも、かぼちゃ、キャベツ、大根、きのこ類</div>
+          <div class="ingredients-title">INGREDIENTS</div>
+          <div class="ingredients-grid">
+            <div class="ingredient-card">
+              <div class="ingredient-name">カモミール</div>
+              <div class="ingredient-kinou">疎肝和胃・安神</div>
+              <div class="ingredient-desc">緊張した消化器をほぐし、ストレスからくる胃の不快感を鎮める。肝が脾を侵すパターン（肝脾不和）に特に有効。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">なつめ（大棗）</div>
+              <div class="ingredient-kinou">補中益気・養血安神</div>
+              <div class="ingredient-desc">胃腸を健やかに保ち、頑張りすぎた精神を安定させる。脾胃の気を補う代表的な補益薬で、実タイプの過緊張を緩和する。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">ターメリック（ウコン）</div>
+              <div class="ingredient-kinou">利胆・活血</div>
+              <div class="ingredient-desc">胆汁の分泌を促して消化をサポートし、胃の熱を整える。食べ過ぎ・飲み過ぎ後の胃もたれにも。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">麦茶</div>
+              <div class="ingredient-kinou">清熱・健胃</div>
+              <div class="ingredient-desc">胃の余分な熱を冷まし、消化を助ける。ノンカフェインで体に優しく、脾実タイプの過剰な熱感をやわらげる。</div>
+            </div>
+          </div>
         </div>
-        <div class="tea-card-footer">
+        <div class="tea-detail-footer">
           <a href="https://kampotakeru.stores.jp/items/6326cdbec36dbe536f8c3b82" target="_blank" class="tea-store-link">
             STORESで見る
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -710,25 +711,52 @@ body {
       </div>
 
       <!-- 己 -->
-      <div class="tea-card" data-go="earth">
-        <div class="tea-card-top">
-          <div class="tea-kanji" style="color:var(--earth);">己</div>
-          <div class="tea-meta">
-            <div class="tea-name">つちのと</div>
-            <div class="tea-title">つちのとブレンド</div>
-            <span class="tea-go-badge go-earth">土－ 陰</span>
+      <div class="tea-detail" data-go="earth">
+        <div class="tea-detail-header">
+          <div class="tea-kanji-block">
+            <div class="tea-kanji" style="color:var(--earth);">己</div>
+            <div class="tea-yomi">つちのと</div>
+          </div>
+          <div class="tea-header-body">
+            <div class="tea-go-row">
+              <span class="tea-go-badge go-earth">土－ 陰</span>
+              <span class="tea-type-tag">脾虚・くよくよタイプ</span>
+            </div>
+            <div class="tea-blend-name">つちのとブレンド</div>
+            <div class="tea-main-ingredients">台湾金萱茶 × なつめ</div>
           </div>
         </div>
-        <div class="tea-card-body">
-          <div class="tea-ingredients">台湾金萱茶・なつめ・キンモクセイ</div>
-          <div class="tea-effect">金萱茶のバニラのような香りとキンモクセイが、弱った胃腸を励まし、元気を呼び戻します。</div>
-          <div class="tea-constitution">
-            <div class="tea-constitution-label">体質のクセ（脾虚・くよくよタイプ）</div>
-            消化器（脾）のエネルギーが不足。胃もたれ、消化不良、食後の眠気、疲れやすさ、気分の落ち込みが特徴。
+        <div class="tea-detail-body">
+          <div class="tea-catchcopy">甘いバニラの香りがする台湾の高級金萱茶に、元気をくれるなつめとほのかに香るキンモクセイが入った、なんだか少し懐かしい気分のするお茶。体が重くてやる気が出ない時や、食欲がなくて体が弱ってる時に。</div>
+          <div class="tea-kinou">
+            <div class="tea-kinou-label">はたらき</div>
+            健脾益気 ── 弱った胃腸（脾）を元気づけ、エネルギー（気）を作れる体にします
           </div>
-          <div class="tea-food"><strong>養生食材：</strong>もち米、とうもろこし、大豆、栗、玉ねぎ、鶏肉、かつお</div>
+          <div class="ingredients-title">INGREDIENTS</div>
+          <div class="ingredients-grid">
+            <div class="ingredient-card">
+              <div class="ingredient-name">台湾金萱茶</div>
+              <div class="ingredient-kinou">理気和胃・健脾</div>
+              <div class="ingredient-desc">バニラのような優しい香りで気を巡らせ、弱った胃腸を活性化。軽く発酵しているので胃への負担が少ない。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">当帰葉（アンゼリカ）</div>
+              <div class="ingredient-kinou">補血・温中</div>
+              <div class="ingredient-desc">脾虚で作られにくくなった血を補い、体を温めながら巡りを助ける。胃腸の弱りを根本から支える。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">なつめ（大棗）</div>
+              <div class="ingredient-kinou">補中益気・健脾</div>
+              <div class="ingredient-desc">弱った胃腸を温め、気（エネルギー）を生み出す力を助ける。食欲不振や疲れやすさに対応。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">キンモクセイ</div>
+              <div class="ingredient-kinou">理気化痰・芳香</div>
+              <div class="ingredient-desc">甘い香りで気の停滞を解消し、食欲を呼び覚ます。胃腸の弱りに伴う湿の停滞を香りの力でさばく。</div>
+            </div>
+          </div>
         </div>
-        <div class="tea-card-footer">
+        <div class="tea-detail-footer">
           <a href="https://kampotakeru.stores.jp/items/6326d166fd12d15177ab07cc" target="_blank" class="tea-store-link">
             STORESで見る
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -737,25 +765,52 @@ body {
       </div>
 
       <!-- 庚 -->
-      <div class="tea-card" data-go="metal">
-        <div class="tea-card-top">
-          <div class="tea-kanji" style="color:var(--metal);">庚</div>
-          <div class="tea-meta">
-            <div class="tea-name">かのえ</div>
-            <div class="tea-title">かのえブレンド</div>
-            <span class="tea-go-badge go-metal">金＋ 陽</span>
+      <div class="tea-detail" data-go="metal">
+        <div class="tea-detail-header">
+          <div class="tea-kanji-block">
+            <div class="tea-kanji" style="color:var(--metal);">庚</div>
+            <div class="tea-yomi">かのえ</div>
+          </div>
+          <div class="tea-header-body">
+            <div class="tea-go-row">
+              <span class="tea-go-badge go-metal">金＋ 陽</span>
+              <span class="tea-type-tag">肺実・ムズムズタイプ</span>
+            </div>
+            <div class="tea-blend-name">かのえブレンド</div>
+            <div class="tea-main-ingredients">プーアル茶 × みかんの皮</div>
           </div>
         </div>
-        <div class="tea-card-body">
-          <div class="tea-ingredients">プーアル茶・みかんの皮・コリアンダーシード</div>
-          <div class="tea-effect">陳皮（みかんの皮）とスパイスの華やかな香りが、重く滞った気をスッキリと発散させます。</div>
-          <div class="tea-constitution">
-            <div class="tea-constitution-label">体質のクセ（肺実・ムズムズタイプ）</div>
-            呼吸器（肺）が過剰反応しやすい。かゆみ、アレルギー、くしゃみ、せき、さむけ、じんましんが出やすい。
+        <div class="tea-detail-body">
+          <div class="tea-catchcopy">コクのある深い味わいのプーアル茶に、みかんの皮やコリアンダーシードなどの柑橘系っぽい華やかな香りが、すっきりさせてくれるお茶。油の多い食事でさっぱりしたい時や、食後のお供にも。</div>
+          <div class="tea-kinou">
+            <div class="tea-kinou-label">はたらき</div>
+            宣肺理気 ── 滞った肺の気を発散させ、呼吸器やバリア機能をスムーズにします
           </div>
-          <div class="tea-food"><strong>養生食材：</strong>ねぎ、ニラ、にんにく、しょうが、しそ、大根、玉ねぎ</div>
+          <div class="ingredients-title">INGREDIENTS</div>
+          <div class="ingredients-grid">
+            <div class="ingredient-card">
+              <div class="ingredient-name">プーアル茶</div>
+              <div class="ingredient-kinou">降気消積・化湿</div>
+              <div class="ingredient-desc">後発酵茶特有の力で重く滞った気を下へ降ろし、余分なものを掃除する。肺と表裏の関係にある大腸にも働きかける。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">みかんの皮（陳皮）</div>
+              <div class="ingredient-kinou">理気健脾・燥湿化痰</div>
+              <div class="ingredient-desc">気の滞りを解消する理気薬の代表格。痰湿を乾かし、鼻や気道の詰まりをすっきりさせる。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">コリアンダーシード</div>
+              <div class="ingredient-kinou">理気・発散</div>
+              <div class="ingredient-desc">香りが気を外へ向かわせ、鼻づまりや皮膚のムズムズ感を緩和。外からの刺激（表邪）を発散させる。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">キンセンカ</div>
+              <div class="ingredient-kinou">清熱解毒・活血</div>
+              <div class="ingredient-desc">皮膚や粘膜の炎症・充血を鎮め、バリア機能の乱れを整える。肺の熱による皮膚症状にアプローチ。</div>
+            </div>
+          </div>
         </div>
-        <div class="tea-card-footer">
+        <div class="tea-detail-footer">
           <a href="https://kampotakeru.stores.jp/items/6326d90ced4ab02ebbddc59f" target="_blank" class="tea-store-link">
             STORESで見る
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -764,25 +819,52 @@ body {
       </div>
 
       <!-- 辛 -->
-      <div class="tea-card" data-go="metal">
-        <div class="tea-card-top">
-          <div class="tea-kanji" style="color:var(--metal);">辛</div>
-          <div class="tea-meta">
-            <div class="tea-name">かのと</div>
-            <div class="tea-title">かのとブレンド</div>
-            <span class="tea-go-badge go-metal">金－ 陰</span>
+      <div class="tea-detail" data-go="metal">
+        <div class="tea-detail-header">
+          <div class="tea-kanji-block">
+            <div class="tea-kanji" style="color:var(--metal);">辛</div>
+            <div class="tea-yomi">かのと</div>
+          </div>
+          <div class="tea-header-body">
+            <div class="tea-go-row">
+              <span class="tea-go-badge go-metal">金－ 陰</span>
+              <span class="tea-type-tag">肺虚・ひりひりタイプ</span>
+            </div>
+            <div class="tea-blend-name">かのとブレンド</div>
+            <div class="tea-main-ingredients">ハトムギ茶 × ココナッツ</div>
           </div>
         </div>
-        <div class="tea-card-body">
-          <div class="tea-ingredients">ココナッツ・ゆず・ハトムギ・びわの葉</div>
-          <div class="tea-effect">ココナッツとゆずの潤いが、繊細な心と体を優しく包み、内側からキラキラと輝かせます。</div>
-          <div class="tea-constitution">
-            <div class="tea-constitution-label">体質のクセ（肺虚・ひりひりタイプ）</div>
-            呼吸器（肺）のバリア機能が弱い。天気・気圧の変化に弱く、鼻やのどの違和感、敏感肌、風邪を引きやすい。
+        <div class="tea-detail-body">
+          <div class="tea-catchcopy">ココナッツとハトムギ茶の不思議な味わいがクセになってしまう、白いお茶。しっとりと潤したいこころとからだに、いつまでもきらきらしていたい自分に。</div>
+          <div class="tea-kinou">
+            <div class="tea-kinou-label">はたらき</div>
+            潤肺養陰 ── 乾燥した肺やお肌に潤いを与え、外からの刺激に対するバリア力を高めます
           </div>
-          <div class="tea-food"><strong>養生食材：</strong>白菜、れんこん、山芋、白ごま、豆腐、豆乳、白きくらげ</div>
+          <div class="ingredients-title">INGREDIENTS</div>
+          <div class="ingredients-grid">
+            <div class="ingredient-card">
+              <div class="ingredient-name">ハトムギ（薏苡仁）</div>
+              <div class="ingredient-kinou">健脾利湿・清熱</div>
+              <div class="ingredient-desc">肌の状態を整えながら、余分な水分を排出する。乾燥肌・ざらつきなど肺虚に伴う皮膚トラブルに対応。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">ココナッツ</div>
+              <div class="ingredient-kinou">補陰潤燥</div>
+              <div class="ingredient-desc">体の潤い（陰）を補い、乾燥した粘膜や肌を内側から守る。乾燥による不調全般に使いやすい食材。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">びわの葉（枇杷葉）</div>
+              <div class="ingredient-kinou">潤肺止咳・降気</div>
+              <div class="ingredient-desc">肺を潤して咳を鎮め、のどの乾燥・せき込みを落ち着かせる。肺の潤い不足（肺陰虚）の代表的な対応薬。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">ゆず</div>
+              <div class="ingredient-kinou">理気化痰・芳香解鬱</div>
+              <div class="ingredient-desc">香りでバリア機能（衛気）を高め、気の滞りを解消する。ビタミンCが豊富で、乾燥期の免疫サポートにも。</div>
+            </div>
+          </div>
         </div>
-        <div class="tea-card-footer">
+        <div class="tea-detail-footer">
           <a href="https://kampotakeru.stores.jp/items/6326e1f62e745237abed5452" target="_blank" class="tea-store-link">
             STORESで見る
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -791,25 +873,52 @@ body {
       </div>
 
       <!-- 壬 -->
-      <div class="tea-card" data-go="water">
-        <div class="tea-card-top">
-          <div class="tea-kanji" style="color:var(--water);">壬</div>
-          <div class="tea-meta">
-            <div class="tea-name">みずのえ</div>
-            <div class="tea-title">みずのえブレンド</div>
-            <span class="tea-go-badge go-water">水＋ 陽</span>
+      <div class="tea-detail" data-go="water">
+        <div class="tea-detail-header">
+          <div class="tea-kanji-block">
+            <div class="tea-kanji" style="color:var(--water);">壬</div>
+            <div class="tea-yomi">みずのえ</div>
+          </div>
+          <div class="tea-header-body">
+            <div class="tea-go-row">
+              <span class="tea-go-badge go-water">水＋ 陽</span>
+              <span class="tea-type-tag">腎実・ポヨポヨタイプ</span>
+            </div>
+            <div class="tea-blend-name">みずのえブレンド</div>
+            <div class="tea-main-ingredients">杜仲茶 × シナモン</div>
           </div>
         </div>
-        <div class="tea-card-body">
-          <div class="tea-ingredients">杜仲茶・ジャスミン・シナモン</div>
-          <div class="tea-effect">ジャスミンとシナモンの癒やしの香りが、活動的な毎日のために、まずは心地よい休息を届けます。</div>
-          <div class="tea-constitution">
-            <div class="tea-constitution-label">体質のクセ（腎実・ポヨポヨタイプ）</div>
-            泌尿器（腎）が強まり水がたまりやすい。むくみ、胃のポチャポチャ感、排尿トラブル、体のだる重さが出やすい。
+        <div class="tea-detail-body">
+          <div class="tea-catchcopy">リラックスに良いとされる杜仲茶とジャスミンに、シナモンの香りがふんわりと広がって、全身がいつしかほんわか癒されるお茶。もっと活動的に張り切っていきたい時に、その前にちょっとひと休みしたい時にも。</div>
+          <div class="tea-kinou">
+            <div class="tea-kinou-label">はたらき</div>
+            温陽利水 ── 体を温めることで水の巡りを促し、たまった余分な水分を排出します
           </div>
-          <div class="tea-food"><strong>養生食材：</strong>昆布、わかめ、もずく、あさり、しじみ、イカ、タコ</div>
+          <div class="ingredients-title">INGREDIENTS</div>
+          <div class="ingredients-grid">
+            <div class="ingredient-card">
+              <div class="ingredient-name">杜仲茶</div>
+              <div class="ingredient-kinou">補肝腎・強筋骨</div>
+              <div class="ingredient-desc">腎を補い、腰や足の重だるさを解消する。水の停滞によるむくみ・体の重さを改善しながら腎陽を養う。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">玉椿（女貞子）</div>
+              <div class="ingredient-kinou">滋補肝腎・明目</div>
+              <div class="ingredient-desc">腎の潤いを守りつつ、生命力の土台を整える。腎実タイプに生じやすい陰分の消耗を防ぎ、バランスを取る。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">シナモン（肉桂）</div>
+              <div class="ingredient-kinou">温中散寒・温腎陽</div>
+              <div class="ingredient-desc">体を芯から温めて腎の陽気を活性化し、水の代謝を促進する。冷えによる水分の停滞（水毒）に対応。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">ジャスミン</div>
+              <div class="ingredient-kinou">疎肝理気・安神</div>
+              <div class="ingredient-desc">気の巡りを整えながら精神を穏やかにし、心地よい休息へ導く。気の推動力を香りで後押しする。</div>
+            </div>
+          </div>
         </div>
-        <div class="tea-card-footer">
+        <div class="tea-detail-footer">
           <a href="https://kampotakeru.stores.jp/items/6326e42923747f153b61f82f" target="_blank" class="tea-store-link">
             STORESで見る
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -818,25 +927,57 @@ body {
       </div>
 
       <!-- 癸 -->
-      <div class="tea-card" data-go="water">
-        <div class="tea-card-top">
-          <div class="tea-kanji" style="color:var(--water);">癸</div>
-          <div class="tea-meta">
-            <div class="tea-name">みずのと</div>
-            <div class="tea-title">みずのとブレンド</div>
-            <span class="tea-go-badge go-water">水－ 陰</span>
+      <div class="tea-detail" data-go="water">
+        <div class="tea-detail-header">
+          <div class="tea-kanji-block">
+            <div class="tea-kanji" style="color:var(--water);">癸</div>
+            <div class="tea-yomi">みずのと</div>
+          </div>
+          <div class="tea-header-body">
+            <div class="tea-go-row">
+              <span class="tea-go-badge go-water">水－ 陰</span>
+              <span class="tea-type-tag">腎虚・からからタイプ</span>
+            </div>
+            <div class="tea-blend-name">みずのとブレンド</div>
+            <div class="tea-main-ingredients">玄米茶 × スパイス</div>
           </div>
         </div>
-        <div class="tea-card-body">
-          <div class="tea-ingredients">たんぽぽの根・玄米・3種のスパイス</div>
-          <div class="tea-effect">3種のスパイスと香ばしい玄米が、芯からじんわりと温め、生命力の巡りを調律してくれます。</div>
-          <div class="tea-constitution">
-            <div class="tea-constitution-label">体質のクセ（腎虚・からからタイプ）</div>
-            泌尿器（腎）のエネルギーが不足。肌や髪の乾燥、手足のほてり、のどの渇き、寝汗、足腰の疲れが懸念される。
+        <div class="tea-detail-body">
+          <div class="tea-catchcopy">ほんのり香ばしくてまろやかな味わいの玄米茶に、3つのスパイスが引きしめて、じんわりとあったまる黒いお茶。冷房の当たりすぎでひんやり気味な毎日に、しっとり体の芯から汗をかきたい時に。</div>
+          <div class="tea-kinou">
+            <div class="tea-kinou-label">はたらき</div>
+            補腎温陽 ── 生命力の源である腎を滋養し、芯から温めて精気を補います
           </div>
-          <div class="tea-food"><strong>養生食材：</strong>黒米、黒豆、黒ごま、黒きくらげ、ひじき、くるみ、栗</div>
+          <div class="ingredients-title">INGREDIENTS</div>
+          <div class="ingredients-grid">
+            <div class="ingredient-card">
+              <div class="ingredient-name">玄米</div>
+              <div class="ingredient-kinou">健脾補腎・益気</div>
+              <div class="ingredient-desc">胃腸を整えながら腎のエネルギーを補うベースを作る。食事から得る後天の気を充実させ、先天の腎精を守る。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">たんぽぽの根</div>
+              <div class="ingredient-kinou">清熱解毒・利尿</div>
+              <div class="ingredient-desc">不要なものを体外へ出し、腎の浄化を助ける。腎虚に伴いたまりやすい湿熱を取り除く。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">シナモン（肉桂）</div>
+              <div class="ingredient-kinou">温補腎陽・引火帰原</div>
+              <div class="ingredient-desc">冷えた腎陽を温め、生命力の根本を活性化する。腎虚の中でも特に「腎陽虚（体の芯の冷え）」に対応する。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">クローブ（丁香）</div>
+              <div class="ingredient-kinou">温中降逆・補腎陽</div>
+              <div class="ingredient-desc">胃腸を温めながら腎陽を補う。冷えによる消化不良・疲労感を改善し、精気を底上げする。</div>
+            </div>
+            <div class="ingredient-card">
+              <div class="ingredient-name">フェンネル（茴香）</div>
+              <div class="ingredient-kinou">温腎散寒・理気</div>
+              <div class="ingredient-desc">腎と胃腸を同時に温め、冷えによる腹部の不快感を和らげる。温めながら気を巡らせて停滞を解消する。</div>
+            </div>
+          </div>
         </div>
-        <div class="tea-card-footer">
+        <div class="tea-detail-footer">
           <a href="https://kampotakeru.stores.jp/items/6326e6a0f3086568d563128d" target="_blank" class="tea-store-link">
             STORESで見る
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -844,71 +985,32 @@ body {
         </div>
       </div>
 
-    </div><!-- /tea-grid -->
-  </div><!-- /catalog -->
+    </div><!-- /tea-list -->
+  </div><!-- /filter-wrap -->
 
 </div><!-- /page -->
 
-<!-- USAGE -->
-<div class="page">
-  <div class="usage" style="margin:0 -24px; border-radius:8px;">
-    <p class="usage-eyebrow">FOR STUDENTS</p>
-    <h2 class="usage-title">受講生の皆さんへ：活用イメージ</h2>
-    <div class="usage-grid">
-      <div class="usage-card">
-        <div class="usage-card-num">USAGE 01</div>
-        <div class="usage-card-title">ミニ鑑定の「処方茶」として</div>
-        <div class="usage-card-body">マルシェやイベントで、ワンコイン鑑定の結果に合わせた1包をお渡しします。目に見えない鑑定に形が加わり、お客様の満足度がぐっと高まります。</div>
-      </div>
-      <div class="usage-card">
-        <div class="usage-card-num">USAGE 02</div>
-        <div class="usage-card-title">1ヶ月の体質改善ケアとして</div>
-        <div class="usage-card-body">「今のあなたにはこのお茶で1ヶ月間ケアすることが必要です」と専門家として提案。サロンの施術をその場限りにしない、継続的な養生へつなげます。</div>
-      </div>
-      <div class="usage-card">
-        <div class="usage-card-num">USAGE 03</div>
-        <div class="usage-card-title">ご自身の養生として</div>
-        <div class="usage-card-body">自分の日干に合うブレンドを日常的に飲むことで、体質への理解が深まります。自身が実感していることが、お客様への説明の説得力にもつながります。</div>
-      </div>
-      <div class="usage-card">
-        <div class="usage-card-num">USAGE 04</div>
-        <div class="usage-card-title">サロンのウェルカムティーとして</div>
-        <div class="usage-card-body">バルク商品をサロンのウェルカムティーに。施術前にそっと出す一杯が、鑑定への期待感を高め、KAMPO STANDメソッドの世界観を伝えます。</div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- CTA -->
 <div class="page">
-  <div class="cta-section">
+  <div class="cta-section" style="border-radius:8px; margin-bottom:0;">
     <p class="cta-label">ORDER</p>
-    <h2 class="cta-title">卸売のご注文・詳細はこちら</h2>
-    <p class="cta-sub">受講生限定価格でご注文いただけます。最低注文金額5,000円（税込）〜</p>
+    <p class="cta-title">卸売のご注文・詳細はこちら</p>
     <div class="cta-buttons">
       <a href="wholesale-guide.html" class="cta-btn-secondary">卸売ガイドを見る</a>
       <a href="order-form.html" class="cta-btn-primary">注文フォームへ進む →</a>
     </div>
   </div>
-
-  <div class="foot">
-    KAMPO STAND &nbsp;｜&nbsp; 受講生専用資料
-  </div>
+  <div class="foot">KAMPO STAND &nbsp;｜&nbsp; おちゃぱん監修 &nbsp;｜&nbsp; 受講生専用資料</div>
 </div>
 
 <script>
 function filterTea(go, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.tea-card').forEach(card => {
-    if (go === 'all' || card.dataset.go === go) {
-      card.style.display = 'flex';
-    } else {
-      card.style.display = 'none';
-    }
+  document.querySelectorAll('.tea-detail').forEach(card => {
+    card.style.display = (go === 'all' || card.dataset.go === go) ? 'block' : 'none';
   });
 }
 </script>
-
 </body>
 </html>
