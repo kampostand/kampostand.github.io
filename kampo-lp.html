@@ -267,19 +267,26 @@ body {
   .what-img { aspect-ratio: 16/9; }
 }
 
+.what-lead {
+  font-size: clamp(14px, 2vw, 16px);
+  color: rgba(255,255,255,0.92);
+  line-height: 2;
+  margin-bottom: 24px;
+}
+
 .what-box {
-  border: 1px solid rgba(184,149,106,0.35);
-  background: rgba(184,149,106,0.07);
+  border: 1px solid rgba(184,149,106,0.5);
+  background: rgba(255,255,255,0.08);
   padding: 24px 28px;
   margin: 28px 0;
   font-size: clamp(14px, 1.8vw, 15px);
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.95);
   line-height: 2;
 }
 
 .what-foot {
   font-size: 13px;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.8);
   line-height: 1.9;
 }
 
@@ -421,15 +428,15 @@ body {
 .set-price-s { font-size: 12px; color: var(--ink-light); text-decoration: line-through; }
 .set-price-b { font-family: 'Noto Serif JP', serif; font-size: clamp(30px, 4vw, 42px); color: var(--navy); font-weight: 700; display: block; margin-top: 4px; }
 
-.feat-grid { display: grid; gap: 16px; }
+.feat-grid { display: grid; gap: 20px; }
 
 .feat-card {
   background: var(--white);
   border: 1px solid var(--border);
-  padding: 28px 32px;
+  padding: 32px 36px;
   display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 20px;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
   align-items: start;
   transition: border-color 0.2s, transform 0.2s;
 }
@@ -437,14 +444,14 @@ body {
 .feat-card:hover { border-color: var(--gold); transform: translateY(-2px); }
 
 .feat-num {
-  width: 44px; height: 44px;
+  width: 56px; height: 56px;
   background: var(--navy);
   color: var(--gold-light);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Noto Serif JP', serif;
-  font-size: 18px;
+  font-size: 22px;
   flex-shrink: 0;
 }
 
@@ -686,7 +693,7 @@ body {
 }
 
 .cta-wrap { text-align: center; margin-top: 32px; }
-.cta-note { margin-top: 10px; font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; }
+.cta-note { margin-top: 10px; margin-bottom: 40px; font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; }
 
 .sticky {
   position: fixed;
@@ -999,7 +1006,7 @@ body {
   </div>
 </section>
 
-<section class="sec sec-navy" style="position:relative; overflow:hidden;">
+<section class="sec sec-navy" style="position:relative; overflow:hidden; padding-bottom: 100px;">
   <div class="closing-bg-img"></div>
   <div class="inner" style="position:relative; z-index:1;">
     <p class="closing-text fi">もう、合わないものを選び続けなくていいんです。あなたの悩みにも、必ず理由があります。その理由が分かれば、正しい整え方が見えてくる。合わないままの努力が終わって、自分にも人にも、自信を持って向き合えるようになる。</p>
