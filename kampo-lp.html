@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>「私だけの整え方」がわかる漢方占い講座｜個別講座 最終募集</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2744;
+  --navy-mid: #243358;
+  --navy-light: #2e4070;
+  --navy-pale: #eef1f8;
+  --gold: #b8956a;
+  --gold-light: #d4b48a;
+  --gold-pale: #f5ede0;
+  --ink: #1a1a2e;
+  --ink-mid: #3d3d5c;
+  --ink-light: #6b6b8a;
+  --white: #ffffff;
+  --off-white: #fafaf8;
+  --border: #dde2ee;
+  --border-dark: #c8cfdf;
+  --accent: #c4783a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--off-white);
+  color: var(--ink);
+  line-height: 1.85;
+  font-size: 15px;
+  overflow-x: hidden;
+}
+
+.hero {
+  background: var(--navy);
+  padding: 80px 24px 72px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  background-image: url('hero-bg.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-block;
+  border: 1px solid rgba(184,149,106,0.5);
+  color: var(--gold-light);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  padding: 6px 20px;
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+.hero-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(26px, 5vw, 48px);
+  color: var(--white);
+  line-height: 1.55;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.hero-title em {
+  font-style: normal;
+  color: var(--gold-light);
+}
+
+.hero-sub {
+  font-size: clamp(13px, 1.8vw, 15px);
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 40px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+}
+
+.hero-urgency {
+  display: inline-block;
+  background: rgba(184,149,106,0.12);
+  border: 1px solid rgba(184,149,106,0.35);
+  color: var(--gold-light);
+  padding: 14px 28px;
+  margin-bottom: 32px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  line-height: 1.7;
+}
+
+.hero-urgency strong {
+  display: block;
+  font-size: 17px;
+  font-family: 'Noto Serif JP', serif;
+  margin-bottom: 2px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--white);
+  padding: 18px 48px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: none;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.btn:hover { background: #d4894b; transform: translateY(-2px); }
+
+.btn-note {
+  display: block;
+  margin-top: 10px;
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.sec { padding: 72px 24px; }
+.sec-gray { background: var(--navy-pale); }
+.sec-navy { background: var(--navy); }
+.sec-white { background: var(--white); }
+
+.inner { max-width: 760px; margin: 0 auto; }
+.inner-wide { max-width: 960px; margin: 0 auto; }
+
+.sec-label {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.sec-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(22px, 3.5vw, 34px);
+  line-height: 1.55;
+  margin-bottom: 36px;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.sec-navy .sec-title { color: var(--white); }
+.sec-navy .sec-label { color: var(--gold-light); }
+
+.sec-divider { height: 1px; background: var(--border); }
+
+.target-list { list-style: none; display: grid; gap: 10px; }
+
+.target-list li {
+  padding: 16px 20px 16px 48px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  position: relative;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  transition: border-color 0.2s;
+}
+
+.target-list li:hover { border-color: var(--gold); }
+
+.target-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 16px; top: 16px;
+  color: var(--gold);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.target-foot {
+  margin-top: 24px;
+  text-align: center;
+  color: var(--ink-light);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
+.problem-lead {
+  font-size: clamp(14px, 2vw, 16px);
+  color: var(--ink-mid);
+  line-height: 2;
+  margin-bottom: 24px;
+}
+
+.problem-box {
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  background: var(--gold-pale);
+  margin: 28px 0;
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.85;
+  color: var(--ink);
+}
+
+.what-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.what-img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: var(--navy-light);
+  overflow: hidden;
+  position: relative;
+}
+
+.what-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.what-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.3);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  gap: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px dashed rgba(255,255,255,0.2);
+}
+
+.what-img-placeholder span { font-size: 32px; }
+
+@media (max-width: 640px) {
+  .what-layout { grid-template-columns: 1fr; }
+  .what-img { aspect-ratio: 16/9; }
+}
+
+.what-box {
+  border: 1px solid rgba(184,149,106,0.35);
+  background: rgba(184,149,106,0.07);
+  padding: 24px 28px;
+  margin: 28px 0;
+  font-size: clamp(14px, 1.8vw, 15px);
+  color: rgba(255,255,255,0.85);
+  line-height: 2;
+}
+
+.what-foot {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.9;
+}
+
+.curr-block { margin-bottom: 48px; }
+
+.curr-head {
+  background: var(--navy);
+  color: var(--white);
+  padding: 28px 32px;
+  position: relative;
+}
+
+.curr-head::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--gold);
+}
+
+.curr-lv {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.curr-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.curr-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.85;
+  margin-bottom: 14px;
+}
+
+.curr-price-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(184,149,106,0.15);
+  border: 1px solid rgba(184,149,106,0.4);
+  padding: 7px 16px;
+  font-size: 13px;
+}
+
+.curr-price-tag s { color: rgba(255,255,255,0.4); font-size: 12px; }
+.curr-price-tag strong { color: var(--gold-light); font-size: 16px; font-family: 'Noto Serif JP', serif; }
+
+.curr-items {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: none;
+}
+
+.curr-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+  transition: background 0.15s;
+}
+
+.curr-item:hover { background: var(--navy-pale); }
+.curr-item:last-child { border-bottom: none; }
+
+.curr-n {
+  width: 32px; height: 32px;
+  background: var(--navy);
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.curr-item-t { font-weight: 500; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.curr-item-d { font-size: 13px; color: var(--ink-light); line-height: 1.8; }
+
+.curr-practice {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+  padding: 18px 28px;
+  background: var(--gold-pale);
+  border: 1px solid var(--border);
+  border-top: none;
+  align-items: start;
+}
+
+.curr-p-mark {
+  width: 32px; height: 32px;
+  background: var(--accent);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.curr-p-t { font-weight: 500; font-size: 14px; color: var(--accent); margin-bottom: 4px; }
+.curr-p-d { font-size: 13px; color: var(--ink-light); line-height: 1.8; }
+
+.set-box {
+  border: 2px solid var(--gold);
+  background: var(--white);
+  padding: 32px;
+  margin: 32px 0;
+  text-align: center;
+  position: relative;
+}
+
+.set-tag {
+  position: absolute;
+  top: -1px; right: 24px;
+  background: var(--gold);
+  color: var(--white);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  padding: 4px 14px;
+}
+
+.set-name { font-family: 'Noto Serif JP', serif; font-size: clamp(17px, 2.5vw, 22px); color: var(--ink); margin-bottom: 10px; }
+.set-desc { font-size: 13px; color: var(--ink-light); margin-bottom: 16px; }
+.set-price-s { font-size: 12px; color: var(--ink-light); text-decoration: line-through; }
+.set-price-b { font-family: 'Noto Serif JP', serif; font-size: clamp(30px, 4vw, 42px); color: var(--navy); font-weight: 700; display: block; margin-top: 4px; }
+
+.feat-grid { display: grid; gap: 16px; }
+
+.feat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 20px;
+  align-items: start;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.feat-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+
+.feat-num {
+  width: 44px; height: 44px;
+  background: var(--navy);
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.feat-t { font-family: 'Noto Serif JP', serif; font-size: clamp(15px, 2vw, 18px); margin-bottom: 8px; color: var(--ink); }
+.feat-d { font-size: 13px; color: var(--ink-light); line-height: 1.9; }
+
+.voices { margin-top: 32px; display: grid; gap: 10px; }
+
+.voice {
+  background: var(--navy-pale);
+  border-left: 3px solid var(--gold);
+  padding: 12px 18px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+
+.diff-box {
+  background: var(--navy);
+  color: var(--white);
+  padding: 36px 40px;
+  margin-bottom: 28px;
+}
+
+.diff-q {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(14px, 2vw, 17px);
+  color: rgba(255,255,255,0.85);
+  line-height: 1.9;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.diff-q:first-child { padding-top: 0; }
+.diff-q:last-child { border-bottom: none; padding-bottom: 0; }
+
+.diff-ans { font-size: clamp(14px, 1.8vw, 16px); color: var(--ink-mid); line-height: 2; margin-bottom: 16px; }
+
+.diff-strong {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: var(--navy);
+  font-weight: 600;
+  line-height: 1.7;
+  border-left: 3px solid var(--gold);
+  padding: 12px 20px;
+  background: var(--navy-pale);
+}
+
+.price-note {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.9;
+  margin-bottom: 32px;
+  border-left: 3px solid var(--gold);
+  padding: 12px 18px;
+  background: var(--gold-pale);
+}
+
+.price-cards { display: grid; gap: 16px; margin-bottom: 32px; }
+
+.p-card { background: var(--white); border: 1px solid var(--border); overflow: hidden; }
+
+.p-card-head {
+  background: var(--navy);
+  color: var(--white);
+  padding: 20px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.p-card-name { font-family: 'Noto Serif JP', serif; font-size: clamp(16px, 2.2vw, 20px); font-weight: 600; }
+
+.p-card-name small {
+  display: block;
+  font-size: 10px;
+  color: var(--gold-light);
+  letter-spacing: 0.2em;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  margin-bottom: 4px;
+}
+
+.p-card-price { text-align: right; }
+.p-card-orig { font-size: 11px; color: rgba(255,255,255,0.4); text-decoration: line-through; display: block; }
+.p-card-final { font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 3vw, 30px); color: var(--gold-light); font-weight: 600; }
+.p-card-body { padding: 16px 28px; font-size: 13px; color: var(--ink-light); line-height: 1.85; }
+.p-card-best { border-color: var(--gold); border-width: 2px; }
+.p-card-best .p-card-head { background: var(--navy-light); }
+
+.price-limit {
+  text-align: center;
+  padding: 14px;
+  border: 1px solid var(--border-dark);
+  font-size: 13px;
+  color: var(--ink-mid);
+  letter-spacing: 0.08em;
+  margin-bottom: 32px;
+}
+
+.flow-list { display: grid; gap: 0; }
+
+.flow-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+
+.flow-item:last-child { border-bottom: none; }
+
+.flow-n {
+  width: 48px; height: 48px;
+  background: var(--navy);
+  color: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.flow-t { font-family: 'Noto Serif JP', serif; font-size: clamp(15px, 2vw, 18px); color: var(--ink); margin-bottom: 6px; margin-top: 8px; }
+.flow-d { font-size: 13px; color: var(--ink-light); line-height: 1.85; }
+
+.flow-note {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: var(--gold-pale);
+  border-left: 3px solid var(--gold);
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.9;
+}
+
+.profile-name { font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 3.5vw, 32px); color: var(--ink); margin-bottom: 6px; }
+.profile-role { font-size: 12px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 20px; }
+.profile-text { font-size: 13px; color: var(--ink-light); line-height: 2.1; }
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.profile-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--navy-pale);
+}
+
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-light);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  gap: 12px;
+  border: 1px dashed var(--border-dark);
+}
+
+.profile-img-placeholder span { font-size: 32px; }
+
+@media (max-width: 640px) {
+  .profile-layout { grid-template-columns: 1fr; }
+  .profile-img { aspect-ratio: 1/1; max-width: 200px; }
+}
+
+/* 帯状写真 */
+.photo-band {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-band img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-band-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--navy-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-light);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  gap: 12px;
+  border-top: 1px dashed var(--border-dark);
+  border-bottom: 1px dashed var(--border-dark);
+}
+
+/* クロージング背景写真 */
+.closing-bg-img {
+  position: absolute;
+  inset: 0;
+  background-image: url('closing-bg.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.12;
+}
+
+.closing-text { font-size: clamp(14px, 2vw, 16px); color: rgba(255,255,255,0.75); line-height: 2.1; margin-bottom: 20px; }
+
+.closing-phrase {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(22px, 3.5vw, 36px);
+  color: var(--gold-light);
+  margin: 36px 0;
+  line-height: 1.6;
+  text-align: center;
+  border-top: 1px solid rgba(184,149,106,0.3);
+  border-bottom: 1px solid rgba(184,149,106,0.3);
+  padding: 28px 0;
+}
+
+.cta-wrap { text-align: center; margin-top: 32px; }
+.cta-note { margin-top: 10px; font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; }
+
+.sticky {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--navy);
+  border-top: 2px solid var(--gold);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  z-index: 100;
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+  flex-wrap: wrap;
+}
+
+.sticky.on { transform: translateY(0); }
+
+.sticky-t { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+.sticky-t strong { display: block; color: var(--gold-light); font-family: 'Noto Serif JP', serif; font-size: 14px; }
+
+.sticky-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--white);
+  padding: 10px 28px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.sticky-btn:hover { background: #d4894b; }
+
+.fi { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fi.on { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 600px) {
+  .sec { padding: 56px 18px; }
+  .curr-head, .curr-item, .curr-practice { padding-left: 20px; padding-right: 20px; }
+  .diff-box { padding: 24px 20px; }
+  .feat-card { padding: 22px 20px; }
+  .p-card-head { flex-direction: column; align-items: flex-start; }
+  .p-card-price { text-align: left; }
+  .set-box { padding: 24px 20px; }
+  .flow-item { grid-template-columns: 48px 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="sticky" id="sticky">
+  <div class="sticky-t">
+    <strong>漢方占い個別講座｜最終募集</strong>
+    先着5名　4月10日（金）締切
+  </div>
+  <a href="https://www.jicoo.com/t/kampouranai/f/fmew0wYavru_" target="_blank" class="sticky-btn">アンケートを送る（無料）</a>
+</div>
+
+<section class="hero">
+  <div class="hero-bg-img"></div>
+  <div class="inner" style="position:relative; z-index:2;">
+    <div class="hero-badge fi">KAMPO STAND｜おちゃぱん（山崎かおる）</div>
+    <h1 class="hero-title fi">「私だけの整え方」がわかる<br><em>漢方占い講座</em></h1>
+    <p class="hero-sub fi">個別講座 最終募集のお知らせ</p>
+    <div class="hero-urgency fi">
+      <strong>先着5名　4月10日（金）まで</strong>
+      個別指導の形での募集は、今回が最後となります。
+    </div>
+    <div class="fi">
+      <a href="https://www.jicoo.com/t/kampouranai/f/fmew0wYavru_" target="_blank" class="btn">まずはアンケートを送る（無料）</a>
+      <span class="btn-note">「話だけ聞きたい」でも大丈夫です</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-gray">
+  <div class="inner">
+    <span class="sec-label fi">For You</span>
+    <h2 class="sec-title fi">こんな方へ</h2>
+    <ul class="target-list">
+      <li class="fi">漢方や薬膳を学んだけど、現場でお客様にうまく還元できていない</li>
+      <li class="fi">「なぜ良くならないのか」の理由が分からず、アドバイスに迷いがある</li>
+      <li class="fi">自分や家族の不調に、振り回されないための確かな根拠が欲しい</li>
+      <li class="fi">次々と新しい講座を探してしまう、自分探しのループを終わりにしたい</li>
+      <li class="fi">他と差のつく、一生モノのスキルを持ちたい</li>
+    </ul>
+    <p class="target-foot fi">ひとつでも当てはまるなら、読み進めてみてください。</p>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<section class="sec sec-white">
+  <div class="inner">
+    <span class="sec-label fi">Problem</span>
+    <h2 class="sec-title fi">うまくいかないのは、<br>あなたのせいじゃない</h2>
+    <p class="problem-lead fi">整え方の情報は溢れています。食事法、睡眠法、漢方、薬膳。どれも間違っていない。なのになぜ、変われないのでしょうか。</p>
+    <p class="problem-lead fi">それは「今の自分の状態に、どの方法が合うか」を選ぶ基準を持っていないからです。</p>
+    <div class="problem-box fi">
+      続かなかったのは、選び方を知らなかっただけ。<br>
+      あなたが悪かったんじゃなくて、選ぶ基準が、なかっただけだったんです。
+    </div>
+    <p class="problem-lead fi">悩みの数だけ、理由がある。その理由さえ分かれば、合わないままの努力が終わる。</p>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<section class="sec sec-navy">
+  <div class="inner">
+    <span class="sec-label fi">About</span>
+    <h2 class="sec-title fi">漢方占いとは何か</h2>
+    <div class="what-layout">
+      <div class="what-content">
+        <p class="what-lead fi">漢方占いは、未来を当てるものじゃありません。漢方の体質論と占いの命式（算命学・四柱推命）を掛け合わせて、「この人の体と心はどういうタイプで動いているか」を読み取る、見立ての技術です。</p>
+        <div class="what-box fi">
+          東洋哲学では、あらゆるものは「木・火・土・金・水」の5つの要素に分けられます。季節も、感情も、臓器も、食べ物も、すべてこの五行で説明ができる。占いと漢方はまったく別々に発展してきたのに、同じ「陰陽五行」をルーツに持っています。だから2つを重ねると、体の話と心の話が、同じ言語で語れるようになる。
+        </div>
+        <p class="what-foot fi">5年かけてこのメソッドを作り上げ、多くの方の命式と体質を見てきました。「やっと腑に落ちました」「ホッとしました」という声を、何度もいただきました。</p>
+      </div>
+      <div class="what-img fi">
+        <!-- 漢方茶・お茶の写真 -->
+        <img src="tea.png" alt="漢方茶">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-gray">
+  <div class="inner-wide">
+    <span class="sec-label fi">Curriculum</span>
+    <h2 class="sec-title fi">この講座で、何が身につくのか</h2>
+
+    <div class="curr-block fi">
+      <div class="curr-head">
+        <span class="curr-lv">BASIC COURSE</span>
+        <div class="curr-name">初級｜まず、自分を知る</div>
+        <p class="curr-desc">自分の体質と命式を読み解くことから始めます。「なぜ自分はこう感じやすいのか」「なぜこの時期になると体調が崩れるのか」。長年の疑問に、初めて理由がついていきます。自分のことが分かると、整え方の選び方が根本から変わっていきます。</p>
+        <div class="curr-price-tag"><s>通常 132,000円</s><strong>最終限定 99,000円</strong></div>
+      </div>
+      <div class="curr-items">
+        <div class="curr-item"><div class="curr-n">1</div><div><div class="curr-item-t">漢方の基本｜気血水・五臓</div><div class="curr-item-d">体を構成するエネルギーである「気・血・水」と「五臓」の仕組みを学び、不調が起きる内部環境の理論を習得します。</div></div></div>
+        <div class="curr-item"><div class="curr-n">2</div><div><div class="curr-item-t">占いの基本｜五行と十干</div><div class="curr-item-d">「五行説」と個人の本質を決定づける「十干」を学び、生まれ持った性質を特定する手法を身につけます。</div></div></div>
+        <div class="curr-item"><div class="curr-n">3</div><div><div class="curr-item-t">薬膳の基本｜五味と五色</div><div class="curr-item-d">食材の味（五味）と色（五色）が臓腑にどう作用するかを理解し、体質に合わせた食材を理論に基づいて選べるようになります。</div></div></div>
+        <div class="curr-item"><div class="curr-n">4</div><div><div class="curr-item-t">生年月日から体質を読み解く</div><div class="curr-item-d">誕生時の五行の配置を解析し、生涯を通じて現れやすい不調の傾向や、本来持っているエネルギーの強弱を明らかにします。</div></div></div>
+        <div class="curr-item"><div class="curr-n">5</div><div><div class="curr-item-t">五行バランスと体質について</div><div class="curr-item-d">体内の五行の分布（過不足）から、自律神経や循環器などのバランスを可視化し、客観的な見立てを行う視点を養います。</div></div></div>
+        <div class="curr-item"><div class="curr-n">6</div><div><div class="curr-item-t">からだカルテシートの作り方</div><div class="curr-item-d">分析したデータを整理し、自分や家族の体質を網羅的に把握するための専用シートを作成。迷いのない養生プランを策定します。</div></div></div>
+      </div>
+      <div class="curr-practice">
+        <div class="curr-p-mark">実践</div>
+        <div><div class="curr-p-t">＋実践｜実際の鑑定とフィードバック</div><div class="curr-p-d">学んだ知識を使い、実際の事例で見立てを実施。講師による具体的な助言を通じて、精度の高い分析力を完成させます。</div></div>
+      </div>
+    </div>
+
+    <div class="set-box fi">
+      <div class="set-tag">BEST VALUE</div>
+      <div class="set-name">初級＋中級 セット受講</div>
+      <p class="set-desc">基礎から他者の見立てまでを一気に習得し、仕事の武器にしたい方へ</p>
+      <span class="set-price-s">通常価格 396,000円</span>
+      <span class="set-price-b">298,000円</span>
+    </div>
+
+    <div class="curr-block fi">
+      <div class="curr-head">
+        <span class="curr-lv">ADVANCED COURSE</span>
+        <div class="curr-name">中級｜心と体を、深く読み解く</div>
+        <p class="curr-desc">初級で得た体質の視点に、脳科学の知見を加えることで、見立ての解像度がさらに上がります。心のお悩みは「メンタルの問題」として片付けられることが多い。でも実際には、生まれ持った体質と脳の仕組みが深くつながっています。何となくではなく、根拠を持って心を整えるアドバイスができるようになります。</p>
+      </div>
+      <div class="curr-items">
+        <div class="curr-item"><div class="curr-n">1</div><div><div class="curr-item-t">運気と体調の影響について</div><div class="curr-item-d">巡り来る「時のエネルギー」が、個人の五行バランスにどのような変化をもたらし、体調をどう動かすのかを解明します。</div></div></div>
+        <div class="curr-item"><div class="curr-n">2</div><div><div class="curr-item-t">通変星と十二運から心と体を読み解く</div><div class="curr-item-d">個人の精神的欲求や行動の勢いを示す指標を解析し、心理的な反応が肉体のコンディションに及ぼす影響を論理的に導き出します。</div></div></div>
+        <div class="curr-item"><div class="curr-n">3</div><div><div class="curr-item-t">脳科学による心を整える養生法</div><div class="curr-item-d">生まれ持った体質と脳の反応パターンのつながりを学びます。「なぜ分かっていても変えられないのか」を脳の仕組みから解明し、体と脳の両面から心を整える養生法を習得します。</div></div></div>
+        <div class="curr-item"><div class="curr-n">4</div><div><div class="curr-item-t">運気から体調の変化を予測する</div><div class="curr-item-d">バイオリズムを分析することで、ストレスがかかりやすい時期やエネルギーが停滞しやすいタイミングを予測し、未然に防ぐ対策を立てます。</div></div></div>
+        <div class="curr-item"><div class="curr-n">5</div><div><div class="curr-item-t">オリジナル鑑定AIツールの使い方</div><div class="curr-item-d">複雑な計算やデータ抽出を効率化する専用ツールを活用し、より本質的な「読み解き」に注力するための実戦的な運用方法を学びます。</div></div></div>
+        <div class="curr-item"><div class="curr-n">6</div><div><div class="curr-item-t">こころカルテシートの作り方</div><div class="curr-item-d">肉体の状態に加え、精神の欲求やエネルギーの変動を統合した「こころカルテ」を作成。深層的な不調の要因を可視化します。</div></div></div>
+      </div>
+      <div class="curr-practice">
+        <div class="curr-p-mark">実践</div>
+        <div><div class="curr-p-t">＋実践｜オリジナルメソッド作成</div><div class="curr-p-d">これまでの学びを自身の専門分野や現場のニーズに合わせ、独自の支援スタイルとして構築。即戦力のスキルとして完成させます。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- 帯状写真：ブランドイメージ -->
+<div class="photo-band">
+  <!-- KAMPO STANDのブランド写真 -->
+  <img src="bland.png" alt="KAMPO STAND" style="width:100%; height:100%; object-fit:cover; object-position: center 30%;">
+</div>
+
+<div class="sec-divider"></div>
+    <h2 class="sec-title fi">個別講座だからできること</h2>
+    <div class="feat-grid">
+      <div class="feat-card fi"><div class="feat-num">1</div><div><div class="feat-t">あなたの現場に特化して学べる</div><p class="feat-d">あなたのお客様や家族の実例を、その場で一緒に読み解きながら進めます。教科書の上の話ではなく、あなたの目の前にいる人の話ができる。それがこの講座の一番の強みです。</p></div></div>
+      <div class="feat-card fi"><div class="feat-num">2</div><div><div class="feat-t">オーダーメイドで進む</div><p class="feat-d">日常で使いたい方、発信に活かしたい方、仕事にしたい方。目的に合わせてカリキュラムをカスタマイズします。東洋医学が初めての方でも、すでに学んでいる方でも、スタート地点はそれぞれでいい。</p></div></div>
+      <div class="feat-card fi"><div class="feat-num">3</div><div><div class="feat-t">受講後も、無期限でフォローします</div><p class="feat-d">実践してからが本当の学びだから。受講後もLINEでの質問・相談を無期限で受け付けます。現場でつまずいたとき、いつでも相談できる人がいることが、一番の安心になります。</p></div></div>
+    </div>
+    <div class="voices fi">
+      <div class="voice">「体質が手に取るように分かるようになった」</div>
+      <div class="voice">「根拠を持ってアドバイスできるようになった」</div>
+      <div class="voice">「やっと自分の仕事に自信が持てた」</div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<section class="sec sec-gray">
+  <div class="inner">
+    <span class="sec-label fi">Why Us</span>
+    <h2 class="sec-title fi">他の講座と、何が違うのか</h2>
+    <div class="diff-box fi">
+      <p class="diff-q">漢方や薬膳をさらっと学んで、結局よく分からないまままた別の講座を探しますか。</p>
+      <p class="diff-q">本格的な漢方の資格講座を受けてみたけれど、難しい生薬の知識ばかりで現場で使えないと気づきますか。</p>
+      <p class="diff-q">それとも、生まれの体質という軸を一度しっかり持って、自分の仕事に使える形で身につけますか。</p>
+    </div>
+    <p class="diff-ans fi">この講座で学ぶことは、資格でも知識の詰め込みでもありません。「この人にはなぜこれが合うのか」という理由を、自分の言葉で話せるようになることです。</p>
+    <div class="diff-strong fi">「生まれの体質×占い×脳科学」の掛け合わせで見立てる視点は、他の漢方講座にはありません。ここにしかない。</div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<section class="sec sec-white">
+  <div class="inner">
+    <span class="sec-label fi">Price</span>
+    <h2 class="sec-title fi">料金</h2>
+    <p class="price-note fi">個別講座という形で、私がお一人おひとりの隣に座り、お仕事やご家族の悩みを一緒に解き明かしていく募集は、今回が最後となります。</p>
+    <div class="price-cards">
+      <div class="p-card fi">
+        <div class="p-card-head">
+          <div class="p-card-name"><small>BASIC</small>初級｜自分を知る</div>
+          <div class="p-card-price"><span class="p-card-orig">通常価格 132,000円</span><span class="p-card-final">99,000円</span></div>
+        </div>
+        <div class="p-card-body">受講はまず初級からのスタートになります。初級を受講した上で、引き続き中級に進むことができます。</div>
+      </div>
+      <div class="p-card p-card-best fi">
+        <div class="p-card-head">
+          <div class="p-card-name"><small>BEST VALUE</small>初級＋中級 セット受講</div>
+          <div class="p-card-price"><span class="p-card-orig">通常価格 396,000円</span><span class="p-card-final" style="font-size: clamp(26px, 3.5vw, 36px);">298,000円</span></div>
+        </div>
+        <div class="p-card-body">基礎から他者の見立てまでを一気に習得し、仕事の武器にしたい方へ。セット受講がお得です。</div>
+      </div>
+    </div>
+    <p class="price-limit fi">※個別指導の質を保つため、先着5名様とさせていただきます。</p>
+    <div class="fi" style="text-align:center;">
+      <a href="https://www.jicoo.com/t/kampouranai/f/fmew0wYavru_" target="_blank" class="btn">アンケートを送る（無料）</a>
+      <span class="btn-note" style="color: var(--ink-light);">先着5名　4月10日（金）まで</span>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<section class="sec sec-gray">
+  <div class="inner">
+    <span class="sec-label fi">Notice</span>
+    <h2 class="sec-title fi">今回が、個別講座の最後の募集です</h2>
+    <p class="problem-lead fi">今後は、これまでの鑑定で積み上げてきたデータをさらに分析・精査し、このメソッドをより多くの方に届けるための仕組みづくりやツールの開発に力を注いでいく予定です。漢方占いを、もっと多くの人が使える形にしていきたい。それが今の私の次のステージです。</p>
+    <p class="problem-lead fi">だからこそ、一人ひとりに向き合い続けるこの形に、区切りをつける必要がありました。マンツーマンで、あなたのお客様の名前を出して一緒に考える。あなたの家族の命式をその場で読み解く。あなたの仕事や経験に合わせて進める。この形でお受けするのは、今回で終わりになります。</p>
+    <div class="problem-box fi">毎回、締め切り後も定員を超えるお申し込みをいただいています。<br>先着5名、4月10日（金）締切です。</div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<section class="sec sec-white">
+  <div class="inner">
+    <span class="sec-label fi">Flow</span>
+    <h2 class="sec-title fi">お申し込みの流れ</h2>
+    <div class="flow-list">
+      <div class="flow-item fi"><div class="flow-n">1</div><div><div class="flow-t">アンケートを送る（3分ほど）</div><p class="flow-d">あなたのお仕事・状況・気になることを教えてください。</p></div></div>
+      <div class="flow-item fi"><div class="flow-n">2</div><div><div class="flow-t">かおるから直接お返事します</div><p class="flow-d">内容を確認した上で、おちゃぱん（山崎かおる）から直接ご連絡します。</p></div></div>
+      <div class="flow-item fi"><div class="flow-n">3</div><div><div class="flow-t">ご希望の方にはリモートでご説明</div><p class="flow-d">詳しく話を聞いてみたい方には、オンラインでご説明する機会もご用意しています。</p></div></div>
+    </div>
+    <div class="flow-note fi">アンケートの内容をもとに、あなただけの「理由」を一緒に探す準備をさせてください。「話だけ聞きたい」でも大丈夫です。まずは気軽に送ってみてください。</div>
+    <div class="fi" style="text-align:center; margin-top:32px;">
+      <a href="https://www.jicoo.com/t/kampouranai/f/fmew0wYavru_" target="_blank" class="btn">アンケートを送る（無料）</a>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<section class="sec sec-gray">
+  <div class="inner">
+    <span class="sec-label fi">Profile</span>
+    <div class="profile-layout fi">
+      <div class="profile-img">
+        <!-- かおるさんのプロフィール写真 -->
+        <img src="profile.png" alt="おちゃぱん（山崎かおる）">
+      </div>
+      <div>
+        <div class="profile-name">おちゃぱん（山崎かおる）</div>
+        <div class="profile-role">KAMPO STAND オーナー／漢方占い鑑定士・漢方養生指導士</div>
+        <p class="profile-text">大阪出身。関西外大を経て上京後、テレビ制作に携わり、その後ドラッグストアで登録販売者・店長として10年勤務。自身の体調不良をきっかけに漢方を学び、薬日本堂にて中医学を修める。漢方茶カフェKAMPO STANDを開業するも、コロナ禍で閉店。その後、漢方の体質論と算命学（四柱推命）を掛け合わせた独自メソッド「漢方占い」を5年かけて構築。個別講座受講生は40名。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-navy" style="position:relative; overflow:hidden;">
+  <div class="closing-bg-img"></div>
+  <div class="inner" style="position:relative; z-index:1;">
+    <p class="closing-text fi">もう、合わないものを選び続けなくていいんです。あなたの悩みにも、必ず理由があります。その理由が分かれば、正しい整え方が見えてくる。合わないままの努力が終わって、自分にも人にも、自信を持って向き合えるようになる。</p>
+    <p class="closing-text fi">「これかもしれない」と少しでも思ったなら、その感覚を信じてほしいと思っています。後から「あのとき動けばよかった」と思うより、今動いた方がいい。</p>
+    <div class="closing-phrase fi">理由が分かれば、変えられる。</div>
+    <div class="cta-wrap fi">
+      <div style="font-size:13px; color: var(--gold-light); letter-spacing:0.1em; margin-bottom:16px;">先着5名　4月10日（金）まで</div>
+      <a href="https://www.jicoo.com/t/kampouranai/f/fmew0wYavru_" target="_blank" class="btn">アンケートを送る（無料）</a>
+      <p class="cta-note">「話だけ聞きたい」でも大丈夫です</p>
+    </div>
+  </div>
+</section>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+const sticky = document.getElementById('sticky');
+window.addEventListener('scroll', () => { sticky.classList.toggle('on', window.scrollY > 500); });
+</script>
+</body>
+</html>
