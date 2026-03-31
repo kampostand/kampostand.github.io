@@ -749,13 +749,7 @@ body {
 </head>
 <body>
 
-<div class="sticky" id="sticky">
-  <div class="sticky-t">
-    <strong>漢方占い個別講座｜最終募集</strong>
-    先着5名　4月10日（金）締切
-  </div>
-  <a href="https://www.jicoo.com/t/kampouranai/f/fmew0wYavru_" target="_blank" class="sticky-btn">アンケートを送る（無料）</a>
-</div>
+
 
 <section class="hero">
   <div class="hero-bg-img"></div>
@@ -1025,8 +1019,6 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
 }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
 document.querySelectorAll('.fi').forEach(el => obs.observe(el));
-const sticky = document.getElementById('sticky');
-window.addEventListener('scroll', () => { sticky.classList.toggle('on', window.scrollY > 500); });
 </script>
 </body>
 </html>
